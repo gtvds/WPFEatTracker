@@ -19,11 +19,33 @@ namespace WPFEatTracker
     /// </summary>
     public partial class Dinner : Window
     {
+        MainWindowVM mainVM;
+        MainWindow parentWindow;
         public Dinner()
         {
             InitializeComponent();
         }
+        public Dinner(MainWindowVM refObj, MainWindow parent) {
+            InitializeComponent();
+            mainVM = refObj;
+            parentWindow = parent;
+        }
+        
 
-     
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mwdr = new MainWindow(Name, Name, Name, Name);
+            this.Visibility = Visibility.Hidden;
+            mwdr.Show();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Dinner dinr = new Dinner();
+            mainVM.TextDinner = textboxdr.Text; // получаем имя из текстового поля
+            this.Visibility = Visibility.Hidden;
+            parentWindow.Visibility = Visibility.Visible;
+            //new MainWindow(name, Name, Name, Name).ShowDialog(); // вызываем окно, передавая данные
+        }
     }
 }

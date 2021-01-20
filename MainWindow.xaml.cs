@@ -15,14 +15,31 @@ using System.Windows.Shapes;
 
 namespace WPFEatTracker
 {
+    public class MainWindowVM
+    {
+        string _textDinner;
+        public string TextDinner { get { return _textDinner; } set { _textDinner = value; } }
+    }
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+        MainWindowVM mainWindowVM;
         public MainWindow()
         {
             InitializeComponent();
+            mainWindowVM = new MainWindowVM();
+            textboxdinner.Text = mainWindowVM.TextDinner;
+        }
+
+        public MainWindow(string namebr, string namelh, string namedr, string nameotr)
+        {
+            InitializeComponent();
+            textboxbreakfast.Text += namebr;
+            textboxdinner.Text += namelh;
+            textboxlunch.Text += namedr;
+            textboxothereat.Text += nameotr;
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -65,11 +82,13 @@ namespace WPFEatTracker
             Breakfast br = new Breakfast();
             this.Visibility = Visibility.Hidden;
             br.Show();
+            //как вариант, создать класс, в котором должны храниться нужные значения и передавать его по ссылке в другие формы.
+            //ща опробум
         }
 
         private void DinnerWindow(object sender, RoutedEventArgs e)
         {
-            Dinner dr = new Dinner();
+            Dinner dr = new Dinner(mainWindowVM,this);
             this.Visibility = Visibility.Hidden;
             dr.Show();
         }
@@ -87,5 +106,16 @@ namespace WPFEatTracker
             this.Visibility = Visibility.Hidden;
             oe.Show();
         }
+
+        private void Button_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void TextBox_TextChanged_2(object sender, TextChangedEventArgs e)
+        {
+           
+        }
+        
     }
 }

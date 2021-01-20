@@ -16,7 +16,11 @@
             </Rectangle.Fill>
         </Rectangle>
         <Label Content="Твои перекусы" HorizontalAlignment="Left" Margin="159,30,0,0" VerticalAlignment="Top" Height="50" Width="238" FontSize="30"/>
-        <TextBox HorizontalAlignment="Left" Height="43" Margin="166,130,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="200"/>
-        <TextBox HorizontalAlignment="Left" Height="73" Margin="166,224,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="205"/>
+        <TextBox HorizontalAlignment="Left" Height="30" Margin="166,130,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
+        <TextBox x:Name="textboxoe" HorizontalAlignment="Left" Height="30" Margin="166,254,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="205"/>
+        <Button Content="Назад" HorizontalAlignment="Left" Margin="185,412,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Button Content="Готово" HorizontalAlignment="Left" Margin="296,412,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
+        <Label Content="Что ты ел еще??" HorizontalAlignment="Left" Margin="163,100,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label Content="Кол-во калорий" HorizontalAlignment="Left" Margin="166,223,0,0" VerticalAlignment="Top" FontSize="14"/>
     </Grid>
 </Window>

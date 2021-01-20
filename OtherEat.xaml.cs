@@ -23,5 +23,20 @@ namespace WPFEatTracker
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mwoe = new MainWindow(Name, Name, Name, Name);
+            this.Visibility = Visibility.Hidden;
+            mwoe.Show();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            OtherEat otheat = new OtherEat();
+            string name = textboxoe.Text; // получаем имя из текстового поля
+            this.Visibility = Visibility.Hidden;
+            new MainWindow(name, Name, Name, Name).ShowDialog(); // вызываем окно, передавая данные
+        }
     }
 }

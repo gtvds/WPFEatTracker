@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:WPFEatTracker"
-        Title="MainWindow" Height="550.8" Width="394.4"
+        Title="MainWindow" Height="638.7" Width="394.4"
      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
      TextElement.FontWeight="Regular"
      TextElement.FontSize="13"
@@ -14,7 +14,7 @@
      Background="{DynamicResource MaterialDesignPaper}"
      FontFamily="{DynamicResource MaterialDesignFont}">
     <Grid>
-        <Rectangle Margin="0,2,0.4,-87.2">
+        <Rectangle Margin="0,2,0,-0.2">
             <Rectangle.Fill>
                 <LinearGradientBrush>
                     <GradientStop Color="#F7F09F" Offset="0"></GradientStop>
@@ -33,12 +33,11 @@
         <Label Content="Всего за день" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="39,428,0,0" FontSize="19" FontFamily="Bahnschrift Light"/>
         <Label Content="Калории" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="29,21,0,0" FontSize="36" RenderTransformOrigin="-0.117,-0.641" FontFamily="Bahnschrift Light"/>
         <Label Content="Осталось" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="80,466,0,0" FontSize="19" FontFamily="Bahnschrift Light"/>
-        <TextBox HorizontalAlignment="Left" TextWrapping="Wrap" Text="" Width="120" RenderTransformOrigin="2.043,15.73" Margin="202,464,0,33.8" BorderBrush="LemonChiffon"/>
         <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="202,428,0,0" BorderBrush="LemonChiffon" TextChanged="TextBox_TextChanged_1" />
-        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="202,258,0,0" BorderBrush="LemonChiffon"/>
-        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="202,204,0,0" BorderBrush="LemonChiffon"/>
-        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="202,148,0,0" BorderBrush="LemonChiffon"/>
-        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="202,100,0,0" BorderBrush="LemonChiffon"/>
+        <TextBox x:Name="textboxothereat" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="202,258,0,0" BorderBrush="LemonChiffon"/>
+        <TextBox x:Name="textboxdinner" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="202,204,0,0" BorderBrush="LemonChiffon"/>
+        <TextBox x:Name="textboxlunch" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="202,148,0,0" BorderBrush="LemonChiffon"/>
+        <TextBox x:Name="textboxbreakfast" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="202,100,0,0" BorderBrush="LemonChiffon" TextChanged="TextBox_TextChanged_2"/>
         <Button Content="-"  HorizontalAlignment="Left" Margin="148,98,0,0" VerticalAlignment="Top" Width="39" Height="25" Click="OpenWindow" BorderThickness="0" >
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -94,6 +93,7 @@
                 <ImageBrush ImageSource="C:\Users\Дмитрий\source\repos\WPFEatTracker\image\diagram.png" />
             </Button.Background>
         </Button>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="202,466,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" BorderBrush="LemonChiffon"/>
     </Grid>
 
 </Window>
