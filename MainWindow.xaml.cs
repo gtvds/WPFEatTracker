@@ -1,6 +1,9 @@
-﻿using System;
+﻿using MaterialDesignThemes.Wpf;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,25 +15,87 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPFEatTracker.Models;
+using WPFEatTracker.View;
+using WPFEatTracker.ViewModel;
 
 namespace WPFEatTracker
 {
-    public class MainWindowVM
+    public class MainWindowVM : INotifyPropertyChanged
     {
-        string _textDinner;
-        public string TextDinner { get { return _textDinner; } set { _textDinner = value; } }
+        private int _needKKal;
+        public int NeedKKal
+        {
+            get => _needKKal;
+            set => this.MutateVerbose(ref _needKKal, value, RaisePropertyChanged());
+        }
+
+        private string? _nameBreakfast;
+        public string? NameBreakfast
+        {
+            get => _nameBreakfast;
+            set => this.MutateVerbose(ref _nameBreakfast, value, RaisePropertyChanged());
+        }
+
+        private int _kkal;
+        public int KKal
+        {
+            get => _kkal;
+            set => this.MutateVerbose(ref _kkal, value, RaisePropertyChanged()); 
+        }
+
+        private int _ostatok;
+        public int Ostatok
+        {
+            get => _ostatok;
+            set => this.MutateVerbose(ref _ostatok, value, RaisePropertyChanged());
+        }
+
+        public ICommand RunDialogCommand => new AnotherCommandImplementation(ExecuteRunDialog);
+
+        private async void ExecuteRunDialog(object parameter)
+        {
+            switch (parameter.ToString())
+            {
+                case "Breakfast" :
+                    var view = new Breakfast { DataContext = new BreakfastVM() };
+                    var result = await DialogHost.Show(view, "RootDialog", ClosingEventHandler);
+                    if ((bool)result)
+                    {
+                        NameBreakfast = ((BreakfastVM)view.DataContext).Name;
+                        KKal += ((BreakfastVM)view.DataContext).KKal.Value;
+                        Ostatok = NeedKKal - KKal;
+                    }
+                    break;
+                case "Dinner" :
+                    break;
+                case "Lunch" :
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void ClosingEventHandler(object sender, DialogClosingEventArgs eventArgs) { }
+
+        
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        private Action<PropertyChangedEventArgs> RaisePropertyChanged() => args => PropertyChanged?.Invoke(this, args);
     }
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-        MainWindowVM mainWindowVM;
         public MainWindow()
         {
             InitializeComponent();
-            mainWindowVM = new MainWindowVM();
-            textboxdinner.Text = mainWindowVM.TextDinner;
+            this.DataContext = new MainWindowVM() { NeedKKal=1650 };
         }
 
         public MainWindow(string namebr, string namelh, string namedr, string nameotr)
@@ -42,53 +107,16 @@ namespace WPFEatTracker
             textboxothereat.Text += nameotr;
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-         
-        }
-
-        private void WindowsFormsHost_ChildChanged(object sender, System.Windows.Forms.Integration.ChildChangedEventArgs e)
-        {
-
-        }
-
-        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void Button_DpiChanged(object sender, DpiChangedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-          
-        }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
         private void OpenWindow(object sender, RoutedEventArgs e)
         {
-            Breakfast br = new Breakfast();
-            this.Visibility = Visibility.Hidden;
-            br.Show();
-            //как вариант, создать класс, в котором должны храниться нужные значения и передавать его по ссылке в другие формы.
-            //ща опробум
+            //Breakfast br = new Breakfast();
+            //this.Visibility = Visibility.Hidden;
+            //br.Show();
         }
 
         private void DinnerWindow(object sender, RoutedEventArgs e)
         {
-            Dinner dr = new Dinner(mainWindowVM,this);
+            Dinner dr = new Dinner();
             this.Visibility = Visibility.Hidden;
             dr.Show();
         }
@@ -110,11 +138,6 @@ namespace WPFEatTracker
         private void Button_MouseDown(object sender, MouseButtonEventArgs e)
         {
             this.Close();
-        }
-
-        private void TextBox_TextChanged_2(object sender, TextChangedEventArgs e)
-        {
-           
         }
         
     }

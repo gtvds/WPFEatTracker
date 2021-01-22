@@ -13,87 +13,89 @@
      TextOptions.TextRenderingMode="Auto"
      Background="{DynamicResource MaterialDesignPaper}"
      FontFamily="{DynamicResource MaterialDesignFont}">
-    <Grid>
-        <Rectangle Margin="0,2,0,-0.2">
-            <Rectangle.Fill>
-                <LinearGradientBrush>
-                    <GradientStop Color="#F7F09F" Offset="0"></GradientStop>
-                    <GradientStop Color="#7882B4" Offset="1"></GradientStop>
-                </LinearGradientBrush>
-            </Rectangle.Fill>
-        </Rectangle>
-        <materialDesign:Card Padding="32" Margin="16" Visibility="Hidden">
-            <Label Content="Label" HorizontalAlignment="Left" Margin="79,65,0,0" VerticalAlignment="Top"/>
-        </materialDesign:Card>
-        <TextBox HorizontalAlignment="Left" Height="37" TextWrapping="Wrap" Text="1650" VerticalAlignment="Top" Width="121" Margin="200,25,0,0" TextChanged="TextBox_TextChanged" IsManipulationEnabled="True" BorderBrush="LemonChiffon" TextAlignment="Center"/>
-        <Label Content="Завтрак" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="57,98,0,0" FontSize="19" FontFamily="Bahnschrift Light"/>
-        <Label Content="Обед" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="77,144,0,0" FontSize="19" FontFamily="Bahnschrift Light"/>
-        <Label Content="Ужин" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="77,196,0,0" FontSize="19" FontFamily="Bahnschrift Light"/>
-        <Label Content="Перекусы" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="39,250,0,0" FontSize="19" FontFamily="Bahnschrift Light"/>
-        <Label Content="Всего за день" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="39,428,0,0" FontSize="19" FontFamily="Bahnschrift Light"/>
-        <Label Content="Калории" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="29,21,0,0" FontSize="36" RenderTransformOrigin="-0.117,-0.641" FontFamily="Bahnschrift Light"/>
-        <Label Content="Осталось" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="80,466,0,0" FontSize="19" FontFamily="Bahnschrift Light"/>
-        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="202,428,0,0" BorderBrush="LemonChiffon" TextChanged="TextBox_TextChanged_1" />
-        <TextBox x:Name="textboxothereat" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="202,258,0,0" BorderBrush="LemonChiffon"/>
-        <TextBox x:Name="textboxdinner" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="202,204,0,0" BorderBrush="LemonChiffon"/>
-        <TextBox x:Name="textboxlunch" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="202,148,0,0" BorderBrush="LemonChiffon"/>
-        <TextBox x:Name="textboxbreakfast" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="202,100,0,0" BorderBrush="LemonChiffon" TextChanged="TextBox_TextChanged_2"/>
-        <Button Content="-"  HorizontalAlignment="Left" Margin="148,98,0,0" VerticalAlignment="Top" Width="39" Height="25" Click="OpenWindow" BorderThickness="0" >
-            <Button.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="LemonChiffon" Offset="0"/>
-                    <GradientStop Color="Gray" Offset="1"/>
-                </LinearGradientBrush>
-            </Button.Background>
-        </Button>
-        <Button Content="-"  HorizontalAlignment="Left" Margin="148,198,0,0" VerticalAlignment="Top" Width="39" Height="25" Click="DinnerWindow" BorderThickness="0" >
-            <Button.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="LemonChiffon" Offset="0"/>
-                    <GradientStop Color="Gray" Offset="1"/>
-                </LinearGradientBrush>
-            </Button.Background>
-        </Button>
-        <Button Content="-"  HorizontalAlignment="Left" Margin="148,146,0,0" VerticalAlignment="Top" Width="39" Height="25" Click="LunchWindow" BorderThickness="0" >
-            <Button.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="LemonChiffon" Offset="0"/>
-                    <GradientStop Color="Gray" Offset="1"/>
-                </LinearGradientBrush>
-            </Button.Background>
-        </Button>
-        <Button Content="-"  HorizontalAlignment="Left" Margin="148,252,0,0" VerticalAlignment="Top" Width="39" Height="25" Click="OtherEatWindow" BorderThickness="0" >
-            <Button.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="LemonChiffon" Offset="0"/>
-                    <GradientStop Color="Gray" Offset="1"/>
-                </LinearGradientBrush>
-            </Button.Background>
-        </Button>
-        <GroupBox Header="Активность"   HorizontalAlignment="Left" Height="138" VerticalAlignment="Top" Width="350" Margin="22,290,0,0" Background="Transparent" FontWeight="Bold" TextOptions.TextHintingMode="Animated" BorderBrush="White" Foreground="{x:Null}" SnapsToDevicePixels="True" BorderThickness="1"/>
+    <materialDesign:DialogHost Identifier="RootDialog" DialogTheme="Light">
+        <Grid>
+            <Rectangle Margin="0,2,0,-0.2">
+                <Rectangle.Fill>
+                    <LinearGradientBrush>
+                        <GradientStop Color="#F7F09F" Offset="0"></GradientStop>
+                        <GradientStop Color="#7882B4" Offset="1"></GradientStop>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <materialDesign:Card Padding="32" Margin="16" Visibility="Hidden">
+                <Label Content="Label" HorizontalAlignment="Left" Margin="79,65,0,0" VerticalAlignment="Top"/>
+            </materialDesign:Card>
+            <TextBox HorizontalAlignment="Left" Height="37" TextWrapping="Wrap" Text="{Binding Path=NeedKKal, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="121" Margin="200,25,0,0" IsManipulationEnabled="True" BorderBrush="LemonChiffon" TextAlignment="Center"/>
+            <Label Content="Завтрак" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="57,98,0,0" FontSize="19" FontFamily="Bahnschrift Light"/>
+            <Label Content="Обед" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="77,144,0,0" FontSize="19" FontFamily="Bahnschrift Light"/>
+            <Label Content="Ужин" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="77,196,0,0" FontSize="19" FontFamily="Bahnschrift Light"/>
+            <Label Content="Перекусы" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="39,250,0,0" FontSize="19" FontFamily="Bahnschrift Light"/>
+            <Label Content="Всего за день" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="39,428,0,0" FontSize="19" FontFamily="Bahnschrift Light"/>
+            <Label Content="Калории" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="29,21,0,0" FontSize="36" RenderTransformOrigin="-0.117,-0.641" FontFamily="Bahnschrift Light"/>
+            <Label Content="Осталось" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="80,466,0,0" FontSize="19" FontFamily="Bahnschrift Light"/>
+            <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="202,428,0,0" BorderBrush="LemonChiffon" Text="{Binding Path=KKal, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox x:Name="textboxothereat" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="202,258,0,0" BorderBrush="LemonChiffon"/>
+            <TextBox x:Name="textboxdinner" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="202,204,0,0" BorderBrush="LemonChiffon"/>
+            <TextBox x:Name="textboxlunch" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="202,148,0,0" BorderBrush="LemonChiffon"/>
+            <TextBox x:Name="textboxbreakfast" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="202,100,0,0" BorderBrush="LemonChiffon" Text="{Binding Path=NameBreakfast, UpdateSourceTrigger=PropertyChanged}"/>
+            <Button Content="-"  HorizontalAlignment="Left" Margin="148,98,0,0" VerticalAlignment="Top" Width="39" Height="25"  BorderThickness="0" Command="{Binding RunDialogCommand}" CommandParameter="Breakfast" >
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="LemonChiffon" Offset="0"/>
+                        <GradientStop Color="Gray" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Button Content="-"  HorizontalAlignment="Left" Margin="148,198,0,0" VerticalAlignment="Top" Width="39" Height="25" Click="DinnerWindow" BorderThickness="0" >
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="LemonChiffon" Offset="0"/>
+                        <GradientStop Color="Gray" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Button Content="-"  HorizontalAlignment="Left" Margin="148,146,0,0" VerticalAlignment="Top" Width="39" Height="25" Click="LunchWindow" BorderThickness="0" >
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="LemonChiffon" Offset="0"/>
+                        <GradientStop Color="Gray" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Button Content="-"  HorizontalAlignment="Left" Margin="148,252,0,0" VerticalAlignment="Top" Width="39" Height="25" Click="OtherEatWindow" BorderThickness="0" >
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="LemonChiffon" Offset="0"/>
+                        <GradientStop Color="Gray" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <GroupBox Header="Активность"   HorizontalAlignment="Left" Height="138" VerticalAlignment="Top" Width="350" Margin="22,290,0,0" Background="Transparent" FontWeight="Bold" TextOptions.TextHintingMode="Animated" BorderBrush="White" Foreground="{x:Null}" SnapsToDevicePixels="True" BorderThickness="1"/>
 
-        <Button Content="" HorizontalAlignment="Left" Margin="322,20,0,0" VerticalAlignment="Top" Width="50" Height="42" Click="Button_Click_1" BorderThickness="0" >
-            <Button.Background>
-                <ImageBrush ImageSource="C:\Users\Дмитрий\source\repos\WPFEatTracker\image\settings1.png" />
-            </Button.Background>
-        </Button>
-        <Rectangle HorizontalAlignment="Left" Height="83" VerticalAlignment="Top" Width="388" Margin="0,522,0,-84.2" Fill="#FFB2B6CF"/>
-        <Button Content="" HorizontalAlignment="Left" Margin="60,538,0,-73.2" VerticalAlignment="Top" Width="75" Height="56" RenderTransformOrigin="-0.425,0.611" Click="Button_Click_2" BorderThickness="0" >
-            <Button.Background>
-                <ImageBrush ImageSource="C:\Users\Дмитрий\source\repos\WPFEatTracker\image\book.png" />
-            </Button.Background>
-        </Button>
-        <Button Content="" HorizontalAlignment="Left" Margin="146,538,0,-73.2" VerticalAlignment="Top" Width="75" Height="56" Click="Button_Click_1" BorderThickness="0" >
-            <Button.Background>
-                <ImageBrush ImageSource="C:\Users\Дмитрий\source\repos\WPFEatTracker\image\home.png" />
-            </Button.Background>
-        </Button>
-        <Button Content="" HorizontalAlignment="Left" Margin="235,538,0,-73.2" VerticalAlignment="Top" Width="75" Height="56" RenderTransformOrigin="-0.345,0.546" BorderThickness="0" >
-            <Button.Background>
-                <ImageBrush ImageSource="C:\Users\Дмитрий\source\repos\WPFEatTracker\image\diagram.png" />
-            </Button.Background>
-        </Button>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="202,466,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" BorderBrush="LemonChiffon"/>
-    </Grid>
-
+            <Button Content="" HorizontalAlignment="Left" Margin="322,20,0,0" VerticalAlignment="Top" Width="50" Height="42" BorderThickness="0" >
+                <Button.Background>
+                    <ImageBrush ImageSource="/image/settings1.png" />
+                </Button.Background>
+            </Button>
+            <Rectangle HorizontalAlignment="Left" Height="83" VerticalAlignment="Top" Width="388" Margin="0,522,0,-84.2" Fill="#FFB2B6CF"/>
+            <Button Content="" HorizontalAlignment="Left" Margin="60,538,0,-73.2" VerticalAlignment="Top" Width="75" Height="56" RenderTransformOrigin="-0.425,0.611" BorderThickness="0" >
+                <Button.Background>
+                    <ImageBrush ImageSource="/image/book.png" />
+                </Button.Background>
+            </Button>
+            <Button Content="" HorizontalAlignment="Left" Margin="146,538,0,-73.2" VerticalAlignment="Top" Width="75" Height="56" BorderThickness="0" >
+                <Button.Background>
+                    <ImageBrush ImageSource="/image/home.png" />
+                </Button.Background>
+            </Button>
+            <Button Content="" HorizontalAlignment="Left" Margin="235,538,0,-73.2" VerticalAlignment="Top" Width="75" Height="56" RenderTransformOrigin="-0.345,0.546" BorderThickness="0" >
+                <Button.Background>
+                    <ImageBrush ImageSource="/image/diagram.png" />
+                </Button.Background>
+            </Button>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="202,466,0,0" Text="{Binding Path=Ostatok, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" BorderBrush="LemonChiffon"/>
+        </Grid>
+    </materialDesign:DialogHost>
+    
 </Window>

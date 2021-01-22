@@ -42,7 +42,7 @@ namespace WPFEatTracker
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             Dinner dinr = new Dinner();
-            mainVM.TextDinner = textboxdr.Text; // получаем имя из текстового поля
+            //mainVM.TextDinner = textboxdr.Text; // получаем имя из текстового поля
             this.Visibility = Visibility.Hidden;
             parentWindow.Visibility = Visibility.Visible;
             //new MainWindow(name, Name, Name, Name).ShowDialog(); // вызываем окно, передавая данные
