@@ -8,21 +8,21 @@ using WPFEatTracker.Models;
 
 namespace WPFEatTracker.ViewModel
 {
-    public class BreakfastVM : INotifyPropertyChanged
+    public class DinnerVM : INotifyPropertyChanged
     {
-        private string? _name;
+        private string? _namedr;
 
-        public string? NameBreakfast
+        public string? NameDinner
         {
-            get => _name;
-            set => this.MutateVerbose(ref _name, value, RaisePropertyChanged());
+            get => _namedr;
+            set => this.MutateVerbose(ref _namedr, value, RaisePropertyChanged());
         }
 
-        private int? _kkalor;
+        private int? kkalor;
         public int? KKal
         {
-            get => _kkalor;
-            set => this.MutateVerbose(ref _kkalor, value, RaisePropertyChanged());
+            get => kkalor;
+            set => this.MutateVerbose(ref kkalor, value, RaisePropertyChanged());
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -30,5 +30,4 @@ namespace WPFEatTracker.ViewModel
         private Action<PropertyChangedEventArgs> RaisePropertyChanged()
             => args => PropertyChanged?.Invoke(this, args);
     }
-
 }

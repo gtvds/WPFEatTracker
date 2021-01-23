@@ -24,27 +24,42 @@ namespace WPFEatTracker
     public class MainWindowVM : INotifyPropertyChanged
     {
         private int _needKKal;
+        private int _kkal;
+        private int _ostatok;
+        private string? _nameBreakfast;
+        private string? _nameLunch;
+        private string? _nameDinner;
+        private string? _nameOther;
         public int NeedKKal
         {
             get => _needKKal;
             set => this.MutateVerbose(ref _needKKal, value, RaisePropertyChanged());
         }
-
-        private string? _nameBreakfast;
         public string? NameBreakfast
         {
             get => _nameBreakfast;
             set => this.MutateVerbose(ref _nameBreakfast, value, RaisePropertyChanged());
         }
-
-        private int _kkal;
+        public string? NameLunch
+        {
+            get => _nameLunch;
+            set => this.MutateVerbose(ref _nameLunch, value, RaisePropertyChanged());
+        }
+        public string? NameDinner
+        {
+            get => _nameDinner;
+            set => this.MutateVerbose(ref _nameDinner, value, RaisePropertyChanged());
+        }
+        public string? NameOther
+        {
+            get => _nameOther;
+            set => this.MutateVerbose(ref _nameOther, value, RaisePropertyChanged());
+        }
         public int KKal
         {
             get => _kkal;
-            set => this.MutateVerbose(ref _kkal, value, RaisePropertyChanged()); 
+            set => this.MutateVerbose(ref _kkal, value, RaisePropertyChanged());
         }
-
-        private int _ostatok;
         public int Ostatok
         {
             get => _ostatok;
@@ -57,19 +72,45 @@ namespace WPFEatTracker
         {
             switch (parameter.ToString())
             {
-                case "Breakfast" :
-                    var view = new Breakfast { DataContext = new BreakfastVM() };
-                    var result = await DialogHost.Show(view, "RootDialog", ClosingEventHandler);
-                    if ((bool)result)
+                case "Breakfast":
+                    var viewbt = new Breakfast { DataContext = new BreakfastVM() };
+                    var resultbfst = await DialogHost.Show(viewbt, "RootDialog", ClosingEventHandler);
+                    if ((bool)resultbfst)
                     {
-                        NameBreakfast = ((BreakfastVM)view.DataContext).Name;
-                        KKal += ((BreakfastVM)view.DataContext).KKal.Value;
+                        NameBreakfast = ((BreakfastVM)viewbt.DataContext).NameBreakfast;
+                        KKal += ((BreakfastVM)viewbt.DataContext).KKal.Value;
                         Ostatok = NeedKKal - KKal;
                     }
                     break;
-                case "Dinner" :
+                case "Dinner":
+                    var viewdr = new Dinner { DataContext = new DinnerVM() };
+                    var resultdr = await DialogHost.Show(viewdr, "RootDialog", ClosingEventHandler);
+                    if ((bool)resultdr)
+                    {
+                        NameDinner = ((DinnerVM)viewdr.DataContext).NameDinner;
+                        KKal += ((DinnerVM)viewdr.DataContext).KKal.Value;
+                        Ostatok = NeedKKal - KKal;
+                    }
                     break;
-                case "Lunch" :
+                case "Lunch":
+                    var viewlh = new Lunch { DataContext = new LunchVM() };
+                    var resultlh = await DialogHost.Show(viewlh, "RootDialog", ClosingEventHandler);
+                    if ((bool)resultlh)
+                    {
+                        NameLunch = ((LunchVM)viewlh.DataContext).NameLunch;
+                        KKal += ((LunchVM)viewlh.DataContext).KKal.Value;
+                        Ostatok = NeedKKal - KKal;
+                    }
+                    break;
+                case "Other":
+                    var viewor = new Other { DataContext = new OtherVM() };
+                    var resultor = await DialogHost.Show(viewor, "RootDialog", ClosingEventHandler);
+                    if ((bool)resultor)
+                    {
+                        NameOther = ((OtherVM)viewor.DataContext).NameOther;
+                        KKal += ((OtherVM)viewor.DataContext).KKal.Value;
+                        Ostatok = NeedKKal - KKal;
+                    }
                     break;
                 default:
                     break;
@@ -78,7 +119,7 @@ namespace WPFEatTracker
 
         private void ClosingEventHandler(object sender, DialogClosingEventArgs eventArgs) { }
 
-        
+
         public event PropertyChangedEventHandler? PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -95,7 +136,7 @@ namespace WPFEatTracker
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = new MainWindowVM() { NeedKKal=1650 };
+            this.DataContext = new MainWindowVM() { NeedKKal = 1650 };
         }
 
         public MainWindow(string namebr, string namelh, string namedr, string nameotr)
@@ -107,38 +148,10 @@ namespace WPFEatTracker
             textboxothereat.Text += nameotr;
         }
 
-        private void OpenWindow(object sender, RoutedEventArgs e)
-        {
-            //Breakfast br = new Breakfast();
-            //this.Visibility = Visibility.Hidden;
-            //br.Show();
-        }
-
-        private void DinnerWindow(object sender, RoutedEventArgs e)
-        {
-            Dinner dr = new Dinner();
-            this.Visibility = Visibility.Hidden;
-            dr.Show();
-        }
-
-        private void LunchWindow(object sender, RoutedEventArgs e)
-        {
-            Lunch lch = new Lunch();
-            this.Visibility = Visibility.Hidden;
-            lch.Show();
-        }
-
-        private void OtherEatWindow(object sender, RoutedEventArgs e)
-        {
-            OtherEat oe = new OtherEat();
-            this.Visibility = Visibility.Hidden;
-            oe.Show();
-        }
-
         private void Button_MouseDown(object sender, MouseButtonEventArgs e)
         {
             this.Close();
         }
-        
+
     }
 }

@@ -16,18 +16,13 @@ using System.Windows.Shapes;
 namespace WPFEatTracker.View
 {
     /// <summary>
-    /// Логика взаимодействия для Breakfast.xaml
+    /// Логика взаимодействия для Motvation4.xaml
     /// </summary>
-    public partial class Breakfast : UserControl
+    public partial class Motvation4 : UserControl
     {
-        public Breakfast()
+        public Motvation4()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-             
         }
     }
 }

@@ -70,17 +70,33 @@
     </ApplicationDefinition>
     <Compile Include="Models\AnotherCommandImplementation.cs" />
     <Compile Include="ViewModel\BreakfastVM.cs" />
+    <Compile Include="ViewModel\DinnerVM.cs" />
+    <Compile Include="ViewModel\LunchVM.cs" />
+    <Compile Include="ViewModel\OtherVM.cs" />
     <Compile Include="View\Breakfast.xaml.cs">
       <DependentUpon>Breakfast.xaml</DependentUpon>
     </Compile>
-    <Page Include="Dinner.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lunch.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
+    <Compile Include="View\Dinner.xaml.cs">
+      <DependentUpon>Dinner.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Lunch.xaml.cs">
+      <DependentUpon>Lunch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Motvation1.xaml.cs">
+      <DependentUpon>Motvation1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Motvation2.xaml.cs">
+      <DependentUpon>Motvation2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Motvation3.xaml.cs">
+      <DependentUpon>Motvation3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Motvation4.xaml.cs">
+      <DependentUpon>Motvation4.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Other.xaml.cs">
+      <DependentUpon>Other.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -89,30 +105,45 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Dinner.xaml.cs">
-      <DependentUpon>Dinner.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lunch.xaml.cs">
-      <DependentUpon>Lunch.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="OtherEat.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\Breakfast.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\Dinner.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Lunch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Motvation1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Motvation2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Motvation3.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Motvation4.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Other.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\NotifyPropertyChangedExtension.cs" />
-    <Compile Include="OtherEat.xaml.cs">
-      <DependentUpon>OtherEat.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
