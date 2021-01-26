@@ -30,6 +30,7 @@ namespace WPFEatTracker
         private string? _nameLunch;
         private string? _nameDinner;
         private string? _nameOther;
+
         public int NeedKKal
         {
             get => _needKKal;
@@ -80,6 +81,8 @@ namespace WPFEatTracker
                         NameBreakfast = ((BreakfastVM)viewbt.DataContext).NameBreakfast;
                         KKal += ((BreakfastVM)viewbt.DataContext).KKal.Value;
                         Ostatok = NeedKKal - KKal;
+                        var view = new Motvation1 { DataContext = new MotivationVM() };
+                        var result = await DialogHost.Show(view, "RootDialog", ClosingEventHandler);
                     }
                     break;
                 case "Dinner":
@@ -90,6 +93,8 @@ namespace WPFEatTracker
                         NameDinner = ((DinnerVM)viewdr.DataContext).NameDinner;
                         KKal += ((DinnerVM)viewdr.DataContext).KKal.Value;
                         Ostatok = NeedKKal - KKal;
+                        var view = new Motvation2 { DataContext = new MotivationVM() };
+                        var result = await DialogHost.Show(view, "RootDialog", ClosingEventHandler);
                     }
                     break;
                 case "Lunch":
@@ -100,6 +105,8 @@ namespace WPFEatTracker
                         NameLunch = ((LunchVM)viewlh.DataContext).NameLunch;
                         KKal += ((LunchVM)viewlh.DataContext).KKal.Value;
                         Ostatok = NeedKKal - KKal;
+                        var view = new Motvation3 { DataContext = new MotivationVM() };
+                        var result = await DialogHost.Show(view, "RootDialog", ClosingEventHandler);
                     }
                     break;
                 case "Other":
@@ -110,6 +117,8 @@ namespace WPFEatTracker
                         NameOther = ((OtherVM)viewor.DataContext).NameOther;
                         KKal += ((OtherVM)viewor.DataContext).KKal.Value;
                         Ostatok = NeedKKal - KKal;
+                        var view = new Motvation4 { DataContext = new MotivationVM() };
+                        var result = await DialogHost.Show(view, "RootDialog", ClosingEventHandler);
                     }
                     break;
                 default:

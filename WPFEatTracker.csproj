@@ -72,6 +72,7 @@
     <Compile Include="ViewModel\BreakfastVM.cs" />
     <Compile Include="ViewModel\DinnerVM.cs" />
     <Compile Include="ViewModel\LunchVM.cs" />
+    <Compile Include="ViewModel\MotivationVM.cs" />
     <Compile Include="ViewModel\OtherVM.cs" />
     <Compile Include="View\Breakfast.xaml.cs">
       <DependentUpon>Breakfast.xaml</DependentUpon>
