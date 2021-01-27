@@ -87,8 +87,14 @@
     <Compile Include="View\Breakfast.xaml.cs">
       <DependentUpon>Breakfast.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Diagram.xaml.cs">
+      <DependentUpon>Diagram.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Dinner.xaml.cs">
       <DependentUpon>Dinner.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Home.xaml.cs">
+      <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Lunch.xaml.cs">
       <DependentUpon>Lunch.xaml</DependentUpon>
@@ -107,6 +113,9 @@
     </Compile>
     <Compile Include="View\Other.xaml.cs">
       <DependentUpon>Other.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Recommendations.xaml.cs">
+      <DependentUpon>Recommendations.xaml</DependentUpon>
     </Compile>
     <Page Include="Autentification.xaml">
       <SubType>Designer</SubType>
@@ -136,7 +145,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\Diagram.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Dinner.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Home.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -164,6 +181,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Recommendations.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\NotifyPropertyChangedExtension.cs" />
@@ -183,6 +204,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -192,9 +214,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="panel.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="image\book.png">
@@ -212,17 +231,7 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="image\panel.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="image\settings1.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="image\znachki.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
