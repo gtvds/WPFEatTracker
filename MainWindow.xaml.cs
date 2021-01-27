@@ -142,25 +142,35 @@ namespace WPFEatTracker
     /// </summary>
     public partial class MainWindow : Window
     {
+    
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = new MainWindowVM() { NeedKKal = 1650 };
+            this.DataContext = new MainWindowVM() { NeedKKal = Person.kkal };
+            
+
         }
 
-        public MainWindow(string namebr, string namelh, string namedr, string nameotr)
-        {
-            InitializeComponent();
-            textboxbreakfast.Text += namebr;
-            textboxdinner.Text += namelh;
-            textboxlunch.Text += namedr;
-            textboxothereat.Text += nameotr;
-        }
+        //public MainWindow(string namebr, string namelh, string namedr, string nameotr)
+        //{
+        //    InitializeComponent();
+        //    textboxbreakfast.Text += namebr;
+        //    textboxdinner.Text += namelh;
+        //    textboxlunch.Text += namedr;
+        //    textboxothereat.Text += nameotr;
+        //}
 
         private void Button_MouseDown(object sender, MouseButtonEventArgs e)
         {
             this.Close();
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Kalory k = new Kalory();            
+            k.Show();
+            this.Close();
+            
+        }
     }
 }

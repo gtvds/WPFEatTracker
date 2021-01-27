@@ -68,7 +68,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Autentification.xaml.cs">
+      <DependentUpon>Autentification.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Kalory.xaml.cs">
+      <DependentUpon>Kalory.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Models\AnotherCommandImplementation.cs" />
+    <Compile Include="Person.cs" />
+    <Compile Include="Start.xaml.cs">
+      <DependentUpon>Start.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\BreakfastVM.cs" />
     <Compile Include="ViewModel\DinnerVM.cs" />
     <Compile Include="ViewModel\LunchVM.cs" />
@@ -98,6 +108,14 @@
     <Compile Include="View\Other.xaml.cs">
       <DependentUpon>Other.xaml</DependentUpon>
     </Compile>
+    <Page Include="Autentification.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Kalory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -110,6 +128,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Start.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Breakfast.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
