@@ -1,0 +1,126 @@
+﻿<Page x:Class="WPFEatTracker.View.Home"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WPFEatTracker.View"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="640" d:DesignWidth="400"
+      Title="Home"
+     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     FontFamily="{DynamicResource MaterialDesignFont}">
+
+    <materialDesign:DialogHost Identifier="RootDialog" DialogTheme="Light">
+        <Grid Background="{x:Null}">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Width="360">
+                    <!-- Заголовок страницы -->
+                    <Grid Margin="0 30 0 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="70"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Content="Калории" FontSize="36" FontFamily="Bahnschrift Light" Grid.Column="0"/>
+                        <TextBox Height="37" Text="{Binding Path=NeedKKal, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" IsManipulationEnabled="True" BorderBrush="LemonChiffon" TextAlignment="Center" Width="120" Grid.Column="1"/>
+                        <Button Content="" HorizontalAlignment="Center" Width="50" Height="50" BorderThickness="0" Click="Button_Click" Grid.Column="2">
+                            <Button.Background>
+                                <ImageBrush ImageSource="/image/settings1.png" />
+                            </Button.Background>
+                        </Button>
+                    </Grid>
+
+                    <!-- Приёмы пищи -->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="45"/>
+                            <ColumnDefinition Width="190"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition MinHeight="50"/>
+                            <RowDefinition MinHeight="50"/>
+                            <RowDefinition MinHeight="50"/>
+                            <RowDefinition MinHeight="50"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Content="Завтрак" HorizontalAlignment="Right" VerticalAlignment="Bottom"  FontSize="19" FontFamily="Bahnschrift Light" Grid.Column="0" Grid.Row="0"/>
+                        <Label Content="Обед" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="19" FontFamily="Bahnschrift Light" Grid.Column="0" Grid.Row="1"/>
+                        <Label Content="Ужин" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="19" FontFamily="Bahnschrift Light" Grid.Column="0" Grid.Row="2"/>
+                        <Label Content="Перекусы" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="19" FontFamily="Bahnschrift Light" Grid.Column="0" Grid.Row="3"/>
+
+                        <Button Content="-" VerticalAlignment="Bottom" Width="39" Height="25"  BorderThickness="0" Command="{Binding RunDialogCommand}" CommandParameter="Breakfast"  Grid.Column="1" Grid.Row="0">
+                            <Button.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="LemonChiffon" Offset="0"/>
+                                    <GradientStop Color="Gray" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Button.Background>
+                        </Button>
+                        <Button Content="-" VerticalAlignment="Bottom" Width="39" Height="25" BorderThickness="0" Command="{Binding RunDialogCommand}" CommandParameter="Lunch"  Grid.Column="1" Grid.Row="1">
+                            <Button.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="LemonChiffon" Offset="0"/>
+                                    <GradientStop Color="Gray" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Button.Background>
+                        </Button>
+                        <Button Content="-" VerticalAlignment="Bottom" Width="39" Height="25" BorderThickness="0" Command="{Binding RunDialogCommand}" CommandParameter="Dinner"  Grid.Column="1" Grid.Row="2">
+                            <Button.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="LemonChiffon" Offset="0"/>
+                                    <GradientStop Color="Gray" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Button.Background>
+                        </Button>
+                        <Button Content="-" VerticalAlignment="Bottom" Width="39" Height="25" BorderThickness="0" Command="{Binding RunDialogCommand}" CommandParameter="Other"  Grid.Column="1" Grid.Row="3">
+                            <Button.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="LemonChiffon" Offset="0"/>
+                                    <GradientStop Color="Gray" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Button.Background>
+                        </Button>
+
+                        <TextBox x:Name="textboxbreakfast" Height="23" VerticalAlignment="Bottom" Width="170" BorderBrush="LemonChiffon" Text="{Binding Path=NameBreakfast, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="0"/>
+                        <TextBox x:Name="textboxlunch" Height="23"  VerticalAlignment="Bottom" Width="170" BorderBrush="LemonChiffon" Text="{Binding Path=NameLunch, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="1"/>
+                        <TextBox x:Name="textboxdinner" Height="23" VerticalAlignment="Bottom" Width="170" BorderBrush="LemonChiffon" Text="{Binding Path=NameDinner, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="2"/>
+                        <TextBox x:Name="textboxothereat" Height="23" VerticalAlignment="Bottom" Width="170" BorderBrush="LemonChiffon" Text="{Binding Path=NameOther, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="3"/>
+                    </Grid>
+
+                    <GroupBox Header="Активность" Margin="0 20 0 0" VerticalAlignment="Top" Width="350" FontWeight="Bold" TextOptions.TextHintingMode="Animated" Foreground="{x:Null}" SnapsToDevicePixels="True" BorderThickness="1" BorderBrush="{x:Null}">
+                        <TextBox x:Name="textboxactive" HorizontalAlignment="Left" TextWrapping="Wrap" Width="330" MinHeight="70" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="Black"/>
+                    </GroupBox>
+
+                    <!-- Итоги -->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="190"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition MinHeight="50"/>
+                            <RowDefinition MinHeight="50"/>
+                        </Grid.RowDefinitions>
+                        
+                        <Label Content="Всего за день" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="19" FontFamily="Bahnschrift Light" Grid.Column="0" Grid.Row="0"/>
+                        <Label Content="Осталось" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="19" FontFamily="Bahnschrift Light" Grid.Column="0" Grid.Row="1"/>
+                        
+                        <TextBox Height="23" VerticalAlignment="Bottom" Width="170" BorderBrush="LemonChiffon" Text="{Binding Path=KKal, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="0"/>
+                        <TextBox Height="23" Text="{Binding Path=Ostatok, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom" Width="170" BorderBrush="LemonChiffon" Grid.Column="1" Grid.Row="1"/>
+                    </Grid>
+                </StackPanel>
+            </ScrollViewer>
+
+            <materialDesign:Card Padding="32" Margin="16" Visibility="Hidden">
+                <Label Content="Label" HorizontalAlignment="Left" Margin="79,65,0,0" VerticalAlignment="Top"/>
+            </materialDesign:Card>
+        </Grid>
+    </materialDesign:DialogHost>
+</Page>

@@ -19,9 +19,9 @@ using WPFEatTracker.Models;
 using WPFEatTracker.View;
 using WPFEatTracker.ViewModel;
 
-namespace WPFEatTracker
+namespace WPFEatTracker.View
 {
-    public class MainWindowVM : INotifyPropertyChanged
+    public class HomeVM : INotifyPropertyChanged
     {
         private int _needKKal;
         private int _kkal;
@@ -140,14 +140,14 @@ namespace WPFEatTracker
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Home : Page
     {
-    
-        public MainWindow()
+
+        public Home()
         {
             InitializeComponent();
             this.DataContext = new MainWindowVM() { NeedKKal = Person.kkal };
-            
+
 
         }
 
@@ -160,45 +160,18 @@ namespace WPFEatTracker
         //    textboxothereat.Text += nameotr;
         //}
 
-        private void OpenPage(object sender, RoutedEventArgs e)
-        {
-            switch (((Button)e.OriginalSource).Name)
-            {
-                case "GoHome":
-                    Conten.Navigate(new View.Home());
-                    break;
-                case "GoRecommendations":
-                    Conten.Navigate(new View.Recommendations());
-                    break;
-                case "GoDiagram":
-                    Conten.Navigate(new View.Diagram());
-                    break;
-                default:
-                    return;
-            }
-
-            //try
-            //{
-            //    //Подсчёт количества переходов и вывод страницы с мотивациями, если она нужна...
-            //    if (ClickCounter())
-            //    {
-            //        ShowMotivation();
-            //    }
-            //}
-            //catch { return; }
-        }
-
         private void Button_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            this.Close();
+            //this.Close();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Kalory k = new Kalory();            
-            k.Show();
-            this.Close();
-            
+            //Kalory k = new Kalory();
+            //k.Show();
+            //this.Close();
+
         }
     }
 }
+
