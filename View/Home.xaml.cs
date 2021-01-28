@@ -167,9 +167,13 @@ namespace WPFEatTracker.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //Kalory k = new Kalory();
-            //k.Show();
+            Kalory k = new Kalory();
+            k.Show();
             //this.Close();
+            
+
+
+
 
         }
     }

@@ -36,7 +36,7 @@ namespace WPFEatTracker
             //else
             //{
             //    Person.Size = 0;
-            //}
+            //} соответствует предложению  !=""?:0
             Person.Name = textbox1.Text;
             Person.Size = textbox2.Text!=""?Convert.ToInt32(textbox2.Text):0;
             Person.Age = textbox3.Text!=""?Convert.ToInt32(textbox3.Text):0;

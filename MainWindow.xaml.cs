@@ -200,5 +200,10 @@ namespace WPFEatTracker
             this.Close();
             
         }
+
+        private void Conten_Navigated(object sender, NavigationEventArgs e)
+        {
+
+        }
     }
 }

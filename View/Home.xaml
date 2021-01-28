@@ -95,7 +95,7 @@
                     </Grid>
 
                     <GroupBox Header="Активность" Margin="0 20 0 0" VerticalAlignment="Top" Width="350" FontWeight="Bold" TextOptions.TextHintingMode="Animated" Foreground="{x:Null}" SnapsToDevicePixels="True" BorderThickness="1" BorderBrush="{x:Null}">
-                        <TextBox x:Name="textboxactive" HorizontalAlignment="Left" TextWrapping="Wrap" Width="330" MinHeight="70" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="Black"/>
+                        <TextBox x:Name="textboxactive" AcceptsReturn="True" HorizontalAlignment="Left" TextWrapping="Wrap" Width="330" MinHeight="70" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="Black"/>
                     </GroupBox>
 
                     <!-- Итоги -->

@@ -26,7 +26,7 @@
             <materialDesign:Card Padding="32" Margin="16" Visibility="Hidden">
                 <Label Content="Label" HorizontalAlignment="Left" Margin="79,65,0,0" VerticalAlignment="Top"/>
             </materialDesign:Card>
-            <Label Content="Ваша суточная норма калорий" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,168,0,0" FontSize="26" RenderTransformOrigin="-0.117,-0.641" FontFamily="Bahnschrift Light"/>
+            <Label Content="Ваша суточная норма калорий" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,168,0,0" FontSize="25" RenderTransformOrigin="-0.117,-0.641" FontFamily="Times New Roman" FontStyle="Italic" FontWeight="Bold"/>
 
 
             <Button Content="Продолжить"  HorizontalAlignment="Left" Margin="88,470,0,0" VerticalAlignment="Top" Width="202" Height="49" BorderThickness="0" Command="{Binding RunDialogCommand}" CommandParameter="Other" Click="Button_Click">

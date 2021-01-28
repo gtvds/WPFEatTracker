@@ -29,7 +29,7 @@
             <Label Content="Рост" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="70,173,0,0" FontSize="19" FontFamily="Bahnschrift Light"/>
             <Label Content="Вес" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="77,244,0,0" FontSize="19" FontFamily="Bahnschrift Light"/>
             <Label Content="Возраст" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="39,321,0,0" FontSize="19" FontFamily="Bahnschrift Light"/>
-            <Label Content="Введите свои данные" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="7,21,0,0" FontSize="36" RenderTransformOrigin="-0.117,-0.641" FontFamily="Bahnschrift Light"/>
+        <Label Content="Введите свои данные:" FontStyle="Italic" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,16,0,0" FontSize="34" RenderTransformOrigin="-0.117,-0.641" FontFamily="Arial" />
             <TextBox x:Name="textbox4" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" Margin="155,329,0,0" BorderBrush="LemonChiffon" Text="{Binding Path=NameOther, UpdateSourceTrigger=PropertyChanged}"/>
             <TextBox x:Name="textbox3" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" Margin="155,252,0,0" BorderBrush="LemonChiffon" Text="{Binding Path=NameDinner, UpdateSourceTrigger=PropertyChanged}"/>
             <TextBox x:Name="textbox2" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap"  VerticalAlignment="Top" Width="170" Margin="155,181,0,0" BorderBrush="LemonChiffon" Text="{Binding Path=NameLunch, UpdateSourceTrigger=PropertyChanged}"/>
