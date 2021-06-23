@@ -146,19 +146,8 @@ namespace WPFEatTracker.View
         public Home()
         {
             InitializeComponent();
-            this.DataContext = new MainWindowVM() { NeedKKal = Person.kkal };
-
-
+            this.DataContext = new MainWindowVM() /*{ NeedKKal = Person.kkal }*/;
         }
-
-        //public MainWindow(string namebr, string namelh, string namedr, string nameotr)
-        //{
-        //    InitializeComponent();
-        //    textboxbreakfast.Text += namebr;
-        //    textboxdinner.Text += namelh;
-        //    textboxlunch.Text += namedr;
-        //    textboxothereat.Text += nameotr;
-        //}
 
         private void Button_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -169,12 +158,6 @@ namespace WPFEatTracker.View
         {
             Kalory k = new Kalory();
             k.Show();
-            //this.Close();
-            
-
-
-
-
         }
     }
 }

@@ -24,10 +24,29 @@ namespace WPFEatTracker
             InitializeComponent();
         }
 
+        public Kalory(Person per) : this()
+        {
+            person = per;
+        }
+
+        Person person;
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Person.kkal = Convert.ToInt32(textboxkkal.Text);
-            MainWindow mw = new MainWindow();
+            person.Kalory = textboxkkal.Text;
+            try
+            {
+                using (EatTrackerEntities DbContext = new EatTrackerEntities())
+                {
+                    DbContext.Person.Add(person);
+                    DbContext.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка");
+            }
+            MainWindow mw = new MainWindow(person);
             mw.Show();
             this.Hide();
             

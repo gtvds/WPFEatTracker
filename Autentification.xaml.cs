@@ -19,6 +19,7 @@ namespace WPFEatTracker
     /// </summary>
     public partial class Autentification : Window
     {
+        Person person = new Person();
         public Autentification()
         {
             InitializeComponent();
@@ -26,7 +27,7 @@ namespace WPFEatTracker
         
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Kalory kalor = new Kalory();
+            Kalory kalor = new Kalory(person);
             kalor.Show();
             this.Close();
             //if (textbox2.Text != "")
@@ -37,10 +38,10 @@ namespace WPFEatTracker
             //{
             //    Person.Size = 0;
             //} соответствует предложению  !=""?:0
-            Person.Name = textbox1.Text;
-            Person.Size = textbox2.Text!=""?Convert.ToInt32(textbox2.Text):0;
-            Person.Age = textbox3.Text!=""?Convert.ToInt32(textbox3.Text):0;
-            Person.Weight = textbox4.Text!=""?Convert.ToDecimal(textbox4.Text):0;
+            person.Name = textbox1.Text;
+            person.Size = textbox2.Text;
+            person.Age = textbox3.Text;
+            person.Weight = textbox4.Text;
         }
 
 

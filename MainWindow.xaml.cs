@@ -74,7 +74,7 @@ namespace WPFEatTracker
             switch (parameter.ToString())
             {
                 case "Breakfast":
-                    var viewbt = new Breakfast { DataContext = new BreakfastVM() };
+                    var viewbt = new View.Breakfast { DataContext = new BreakfastVM() };
                     var resultbfst = await DialogHost.Show(viewbt, "RootDialog", ClosingEventHandler);
                     if ((bool)resultbfst)
                     {
@@ -86,7 +86,7 @@ namespace WPFEatTracker
                     }
                     break;
                 case "Dinner":
-                    var viewdr = new Dinner { DataContext = new DinnerVM() };
+                    var viewdr = new View.Dinner { DataContext = new DinnerVM() };
                     var resultdr = await DialogHost.Show(viewdr, "RootDialog", ClosingEventHandler);
                     if ((bool)resultdr)
                     {
@@ -98,7 +98,7 @@ namespace WPFEatTracker
                     }
                     break;
                 case "Lunch":
-                    var viewlh = new Lunch { DataContext = new LunchVM() };
+                    var viewlh = new View.Lunch { DataContext = new LunchVM() };
                     var resultlh = await DialogHost.Show(viewlh, "RootDialog", ClosingEventHandler);
                     if ((bool)resultlh)
                     {
@@ -146,18 +146,12 @@ namespace WPFEatTracker
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = new MainWindowVM() { NeedKKal = Person.kkal };
-            
-               }
+        }
 
-        //public MainWindow(string namebr, string namelh, string namedr, string nameotr)
-        //{
-        //    InitializeComponent();
-        //    textboxbreakfast.Text += namebr;
-        //    textboxdinner.Text += namelh;
-        //    textboxlunch.Text += namedr;
-        //    textboxothereat.Text += nameotr;
-        //}
+        public MainWindow(Person per) : this()
+        {
+            this.DataContext = new MainWindowVM() { NeedKKal = Int32.Parse(per.Kalory) };
+        }
 
         private void OpenPage(object sender, RoutedEventArgs e)
         {
