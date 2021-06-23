@@ -3,12 +3,59 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       xmlns:local="clr-namespace:WPFEatTracker.View"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="Diagram">
+      d:DesignHeight="640" d:DesignWidth="400"
+      Title="Diagram" Margin="0,0,0,0">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Button Grid.Row="0" Content="Сегодня" BorderBrush="{x:Null}" Background="{x:Null}" FontFamily="Bahnschrift Light" FontSize="48" Height="150" Cursor="None" Foreground="Black"/>
+
+        <lvc:PieChart Grid.Row="1" LegendLocation="None" Hoverable="False" DataTooltip="{x:Null}" Width="350" DisableAnimations="True">
+            <lvc:PieChart.Series>
+                <lvc:PieSeries x:Name="BreakfastPieSeries" Title="Завтрак" Values="250" DataLabels="True"
+                               LabelPoint="{Binding PointLabel}" FontFamily="Bahnschrift Light" FontSize="19" Foreground="White">
+                    <lvc:PieSeries.Fill>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF848DC4"/>
+                            <GradientStop Color="#FF606795" Offset="1"/>
+                        </LinearGradientBrush>
+                    </lvc:PieSeries.Fill>
+                </lvc:PieSeries>
+                <lvc:PieSeries x:Name="OtherPieSeries" Title="Перекус" Values="140" DataLabels="True" 
+                               LabelPoint="{Binding PointLabel}" FontFamily="Bahnschrift Light" FontSize="19" Foreground="White">
+                    <lvc:PieSeries.Fill>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF98F5C0"/>
+                            <GradientStop Color="#FF548D6C" Offset="1"/>
+                        </LinearGradientBrush>
+                    </lvc:PieSeries.Fill>
+                </lvc:PieSeries>
+                <lvc:PieSeries x:Name="DinnerPieSeries" Title="Ужин" Values="400" DataLabels="True" 
+                               LabelPoint="{Binding PointLabel}" FontFamily="Bahnschrift Light" FontSize="19" Foreground="White">
+                    <lvc:PieSeries.Fill>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFDED895"/>
+                            <GradientStop Color="#FFC7C289" Offset="1"/>
+                        </LinearGradientBrush>
+                    </lvc:PieSeries.Fill>
+                </lvc:PieSeries>
+                <lvc:PieSeries x:Name="LunchPieSeries" Title="Обед" Values="375" DataLabels="True" 
+                               LabelPoint="{Binding PointLabel}" FontFamily="Bahnschrift Light" FontSize="19" Foreground="White">
+                    <lvc:PieSeries.Fill>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFF5B498"/>
+                            <GradientStop Color="#FFC18E78" Offset="1"/>
+                        </LinearGradientBrush>
+                    </lvc:PieSeries.Fill>
+                </lvc:PieSeries>
+            </lvc:PieChart.Series>
+        </lvc:PieChart>
     </Grid>
 </Page>

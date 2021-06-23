@@ -177,7 +177,7 @@ namespace WPFEatTracker
                     Conten.Navigate(new View.Recommendations());
                     break;
                 case "GoDiagram":
-                    Conten.Navigate(new View.Diagram());
+                    Conten.Navigate(new Diagram());
                     break;
                 default:
                     return;

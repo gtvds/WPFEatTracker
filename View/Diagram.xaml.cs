@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using LiveCharts;
+using LiveCharts.Wpf;
 
 namespace WPFEatTracker.View
 {
@@ -23,6 +25,22 @@ namespace WPFEatTracker.View
         public Diagram()
         {
             InitializeComponent();
+
+            PointLabel = chartPoint =>
+               string.Format("{0}\r\n{1} Ккал", chartPoint.SeriesView.Title.ToString(), chartPoint.Y);
+
+            DataContext = this;
         }
+
+        public Diagram(int breakfast, int other, int lunch, int dinner)
+        {
+            BreakfastPieSeries.Values = new ChartValues<int> { breakfast };
+            OtherPieSeries.Values = new ChartValues<int> { other };
+            LunchPieSeries.Values = new ChartValues<int> { lunch };
+            DinnerPieSeries.Values = new ChartValues<int> { dinner };
+        }
+
+        public Func<ChartPoint, string> PointLabel { get; set; }
+
     }
 }
