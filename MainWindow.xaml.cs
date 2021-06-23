@@ -148,8 +148,7 @@ namespace WPFEatTracker
             InitializeComponent();
             this.DataContext = new MainWindowVM() { NeedKKal = Person.kkal };
             
-
-        }
+               }
 
         //public MainWindow(string namebr, string namelh, string namedr, string nameotr)
         //{

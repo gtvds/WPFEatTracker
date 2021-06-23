@@ -25,6 +25,7 @@
             <materialDesign:Card Padding="32" Margin="16" Visibility="Hidden">
                 <Label Content="Label" HorizontalAlignment="Left" Margin="79,65,0,0" VerticalAlignment="Top"/>
             </materialDesign:Card>
+       
             <Label Content="Имя" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="74,100,0,0" FontSize="19" FontFamily="Bahnschrift Light" RenderTransformOrigin="1.288,0.463"/>
             <Label Content="Рост" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="70,173,0,0" FontSize="19" FontFamily="Bahnschrift Light"/>
             <Label Content="Вес" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="77,244,0,0" FontSize="19" FontFamily="Bahnschrift Light"/>

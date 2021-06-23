@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="46efa57d9fa4469db9525d8053fc741f" Name="Diagram1" ZoomLevel="71">
+        <EntityTypeShape EntityType="EatTrackerModel.Activity" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="EatTrackerModel.Breakfast" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EatTrackerModel.Dinner" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EatTrackerModel.Lunch" Width="1.5" PointX="0.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EatTrackerModel.OtherEat" Width="1.5" PointX="0.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EatTrackerModel.Person" Width="1.5" PointX="0.75" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EatTrackerModel.PersonActive" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="EatTrackerModel.FK_PersonActive_Activity_id_activity" ManuallyRouted="false" />
+        <AssociationConnector Association="EatTrackerModel.FK_PersonActive_Breakfast_id_breakfast" ManuallyRouted="false" />
+        <AssociationConnector Association="EatTrackerModel.FK_PersonActive_Dinner_id_dinner" ManuallyRouted="false" />
+        <AssociationConnector Association="EatTrackerModel.FK_PersonActive_Lunch_id_lunch" ManuallyRouted="false" />
+        <AssociationConnector Association="EatTrackerModel.FK_PersonActive_OtherEat_id_othereat" ManuallyRouted="false" />
+        <AssociationConnector Association="EatTrackerModel.FK_PersonActive_Person_id_person" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

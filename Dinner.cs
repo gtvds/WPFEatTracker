@@ -12,20 +12,17 @@ namespace WPFEatTracker
     using System;
     using System.Collections.Generic;
     
-    public partial class Person
+    public partial class Dinner
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Person()
+        public Dinner()
         {
             this.PersonActive = new HashSet<PersonActive>();
         }
     
-        public int id_person { get; set; }
-        public string Name { get; set; }
-        public string Size { get; set; }
-        public string Weight { get; set; }
-        public string Age { get; set; }
-        public string Kalory { get; set; }
+        public int id_dinner { get; set; }
+        public string eat_dinner { get; set; }
+        public string kalory_din { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PersonActive> PersonActive { get; set; }
