@@ -37,7 +37,7 @@ namespace WPFEatTracker
             //else
             //{
             //    Person.Size = 0;
-            //} соответствует предложению  !=""?:0
+            //} 
             person.Name = textbox1.Text;
             person.Size = textbox2.Text;
             person.Age = textbox3.Text;

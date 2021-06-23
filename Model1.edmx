@@ -4,13 +4,14 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище EatTrackerModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище EatTrackerModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Activity">
           <Key>
             <PropertyRef Name="id_activity" />
           </Key>
           <Property Name="id_activity" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Vid_active" Type="varchar" MaxLength="50" />
+          <Property Name="id_person" Type="int" />
         </EntityType>
         <EntityType Name="Breakfast">
           <Key>
@@ -19,6 +20,7 @@
           <Property Name="id_breakfast" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="eat_breakfast" Type="varchar" MaxLength="50" />
           <Property Name="kalory_breakfast" Type="varchar" MaxLength="50" />
+          <Property Name="id_person" Type="int" />
         </EntityType>
         <EntityType Name="Dinner">
           <Key>
@@ -27,6 +29,7 @@
           <Property Name="id_dinner" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="eat_dinner" Type="varchar" MaxLength="50" />
           <Property Name="kalory_din" Type="varchar" MaxLength="50" />
+          <Property Name="id_person" Type="int" />
         </EntityType>
         <EntityType Name="Lunch">
           <Key>
@@ -35,6 +38,7 @@
           <Property Name="id_lunch" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="eat_lunch" Type="varchar" MaxLength="50" />
           <Property Name="kalory_lunch" Type="varchar" MaxLength="50" />
+          <Property Name="id_person" Type="int" />
         </EntityType>
         <EntityType Name="OtherEat">
           <Key>
@@ -43,6 +47,7 @@
           <Property Name="id_othereat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="eat_other" Type="varchar" MaxLength="50" />
           <Property Name="kalory_other" Type="varchar" MaxLength="50" />
+          <Property Name="id_person" Type="int" />
         </EntityType>
         <EntityType Name="Person">
           <Key>
@@ -55,86 +60,62 @@
           <Property Name="Age" Type="varchar" MaxLength="50" />
           <Property Name="Kalory" Type="varchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="PersonActive">
-          <Key>
-            <PropertyRef Name="id_person_active" />
-          </Key>
-          <Property Name="id_person_active" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="id_person" Type="int" />
-          <Property Name="id_activity" Type="int" />
-          <Property Name="id_breakfast" Type="int" />
-          <Property Name="id_lunch" Type="int" />
-          <Property Name="id_dinner" Type="int" />
-          <Property Name="id_othereat" Type="int" />
-        </EntityType>
-        <Association Name="FK_PersonActive_Activity_id_activity">
-          <End Role="Activity" Type="Self.Activity" Multiplicity="0..1" />
-          <End Role="PersonActive" Type="Self.PersonActive" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Activity">
-              <PropertyRef Name="id_activity" />
-            </Principal>
-            <Dependent Role="PersonActive">
-              <PropertyRef Name="id_activity" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PersonActive_Breakfast_id_breakfast">
-          <End Role="Breakfast" Type="Self.Breakfast" Multiplicity="0..1" />
-          <End Role="PersonActive" Type="Self.PersonActive" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Breakfast">
-              <PropertyRef Name="id_breakfast" />
-            </Principal>
-            <Dependent Role="PersonActive">
-              <PropertyRef Name="id_breakfast" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PersonActive_Dinner_id_dinner">
-          <End Role="Dinner" Type="Self.Dinner" Multiplicity="0..1" />
-          <End Role="PersonActive" Type="Self.PersonActive" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Dinner">
-              <PropertyRef Name="id_dinner" />
-            </Principal>
-            <Dependent Role="PersonActive">
-              <PropertyRef Name="id_dinner" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PersonActive_Lunch_id_lunch">
-          <End Role="Lunch" Type="Self.Lunch" Multiplicity="0..1" />
-          <End Role="PersonActive" Type="Self.PersonActive" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Lunch">
-              <PropertyRef Name="id_lunch" />
-            </Principal>
-            <Dependent Role="PersonActive">
-              <PropertyRef Name="id_lunch" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PersonActive_OtherEat_id_othereat">
-          <End Role="OtherEat" Type="Self.OtherEat" Multiplicity="0..1" />
-          <End Role="PersonActive" Type="Self.PersonActive" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="OtherEat">
-              <PropertyRef Name="id_othereat" />
-            </Principal>
-            <Dependent Role="PersonActive">
-              <PropertyRef Name="id_othereat" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PersonActive_Person_id_person">
+        <Association Name="FK_Activity_Person_id_person">
           <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
-          <End Role="PersonActive" Type="Self.PersonActive" Multiplicity="*" />
+          <End Role="Activity" Type="Self.Activity" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Person">
               <PropertyRef Name="id_person" />
             </Principal>
-            <Dependent Role="PersonActive">
+            <Dependent Role="Activity">
+              <PropertyRef Name="id_person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Breakfast_Person_id_person">
+          <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+          <End Role="Breakfast" Type="Self.Breakfast" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="id_person" />
+            </Principal>
+            <Dependent Role="Breakfast">
+              <PropertyRef Name="id_person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dinner_Person_id_person">
+          <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+          <End Role="Dinner" Type="Self.Dinner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="id_person" />
+            </Principal>
+            <Dependent Role="Dinner">
+              <PropertyRef Name="id_person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lunch_Person_id_person">
+          <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+          <End Role="Lunch" Type="Self.Lunch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="id_person" />
+            </Principal>
+            <Dependent Role="Lunch">
+              <PropertyRef Name="id_person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OtherEat_Person_id_person">
+          <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+          <End Role="OtherEat" Type="Self.OtherEat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="id_person" />
+            </Principal>
+            <Dependent Role="OtherEat">
               <PropertyRef Name="id_person" />
             </Dependent>
           </ReferentialConstraint>
@@ -146,34 +127,28 @@
           <EntitySet Name="Lunch" EntityType="Self.Lunch" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OtherEat" EntityType="Self.OtherEat" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PersonActive" EntityType="Self.PersonActive" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_PersonActive_Activity_id_activity" Association="Self.FK_PersonActive_Activity_id_activity">
-            <End Role="Activity" EntitySet="Activity" />
-            <End Role="PersonActive" EntitySet="PersonActive" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PersonActive_Breakfast_id_breakfast" Association="Self.FK_PersonActive_Breakfast_id_breakfast">
-            <End Role="Breakfast" EntitySet="Breakfast" />
-            <End Role="PersonActive" EntitySet="PersonActive" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PersonActive_Dinner_id_dinner" Association="Self.FK_PersonActive_Dinner_id_dinner">
-            <End Role="Dinner" EntitySet="Dinner" />
-            <End Role="PersonActive" EntitySet="PersonActive" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PersonActive_Lunch_id_lunch" Association="Self.FK_PersonActive_Lunch_id_lunch">
-            <End Role="Lunch" EntitySet="Lunch" />
-            <End Role="PersonActive" EntitySet="PersonActive" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PersonActive_OtherEat_id_othereat" Association="Self.FK_PersonActive_OtherEat_id_othereat">
-            <End Role="OtherEat" EntitySet="OtherEat" />
-            <End Role="PersonActive" EntitySet="PersonActive" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PersonActive_Person_id_person" Association="Self.FK_PersonActive_Person_id_person">
+          <AssociationSet Name="FK_Activity_Person_id_person" Association="Self.FK_Activity_Person_id_person">
             <End Role="Person" EntitySet="Person" />
-            <End Role="PersonActive" EntitySet="PersonActive" />
+            <End Role="Activity" EntitySet="Activity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Breakfast_Person_id_person" Association="Self.FK_Breakfast_Person_id_person">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Breakfast" EntitySet="Breakfast" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dinner_Person_id_person" Association="Self.FK_Dinner_Person_id_person">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Dinner" EntitySet="Dinner" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lunch_Person_id_person" Association="Self.FK_Lunch_Person_id_person">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Lunch" EntitySet="Lunch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OtherEat_Person_id_person" Association="Self.FK_OtherEat_Person_id_person">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="OtherEat" EntitySet="OtherEat" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="EatTrackerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -183,7 +158,8 @@
           </Key>
           <Property Name="id_activity" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Vid_active" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="PersonActive" Relationship="Self.FK_PersonActive_Activity_id_activity" FromRole="Activity" ToRole="PersonActive" />
+          <Property Name="id_person" Type="Int32" />
+          <NavigationProperty Name="Person" Relationship="EatTrackerModel.FK_Activity_Person_id_person" FromRole="Activity" ToRole="Person" />
         </EntityType>
         <EntityType Name="Breakfast">
           <Key>
@@ -192,7 +168,8 @@
           <Property Name="id_breakfast" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="eat_breakfast" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="kalory_breakfast" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="PersonActive" Relationship="Self.FK_PersonActive_Breakfast_id_breakfast" FromRole="Breakfast" ToRole="PersonActive" />
+          <Property Name="id_person" Type="Int32" />
+          <NavigationProperty Name="Person" Relationship="EatTrackerModel.FK_Breakfast_Person_id_person" FromRole="Breakfast" ToRole="Person" />
         </EntityType>
         <EntityType Name="Dinner">
           <Key>
@@ -201,7 +178,8 @@
           <Property Name="id_dinner" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="eat_dinner" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="kalory_din" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="PersonActive" Relationship="Self.FK_PersonActive_Dinner_id_dinner" FromRole="Dinner" ToRole="PersonActive" />
+          <Property Name="id_person" Type="Int32" />
+          <NavigationProperty Name="Person" Relationship="EatTrackerModel.FK_Dinner_Person_id_person" FromRole="Dinner" ToRole="Person" />
         </EntityType>
         <EntityType Name="Lunch">
           <Key>
@@ -210,7 +188,8 @@
           <Property Name="id_lunch" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="eat_lunch" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="kalory_lunch" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="PersonActive" Relationship="Self.FK_PersonActive_Lunch_id_lunch" FromRole="Lunch" ToRole="PersonActive" />
+          <Property Name="id_person" Type="Int32" />
+          <NavigationProperty Name="Person" Relationship="EatTrackerModel.FK_Lunch_Person_id_person" FromRole="Lunch" ToRole="Person" />
         </EntityType>
         <EntityType Name="OtherEat">
           <Key>
@@ -219,7 +198,8 @@
           <Property Name="id_othereat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="eat_other" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="kalory_other" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="PersonActive" Relationship="Self.FK_PersonActive_OtherEat_id_othereat" FromRole="OtherEat" ToRole="PersonActive" />
+          <Property Name="id_person" Type="Int32" />
+          <NavigationProperty Name="Person" Relationship="EatTrackerModel.FK_OtherEat_Person_id_person" FromRole="OtherEat" ToRole="Person" />
         </EntityType>
         <EntityType Name="Person">
           <Key>
@@ -231,98 +211,12 @@
           <Property Name="Weight" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Age" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Kalory" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="PersonActive" Relationship="Self.FK_PersonActive_Person_id_person" FromRole="Person" ToRole="PersonActive" />
+          <NavigationProperty Name="Activity" Relationship="EatTrackerModel.FK_Activity_Person_id_person" FromRole="Person" ToRole="Activity" />
+          <NavigationProperty Name="Breakfast" Relationship="EatTrackerModel.FK_Breakfast_Person_id_person" FromRole="Person" ToRole="Breakfast" />
+          <NavigationProperty Name="Dinner" Relationship="EatTrackerModel.FK_Dinner_Person_id_person" FromRole="Person" ToRole="Dinner" />
+          <NavigationProperty Name="Lunch" Relationship="EatTrackerModel.FK_Lunch_Person_id_person" FromRole="Person" ToRole="Lunch" />
+          <NavigationProperty Name="OtherEat" Relationship="EatTrackerModel.FK_OtherEat_Person_id_person" FromRole="Person" ToRole="OtherEat" />
         </EntityType>
-        <EntityType Name="PersonActive">
-          <Key>
-            <PropertyRef Name="id_person_active" />
-          </Key>
-          <Property Name="id_person_active" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="id_person" Type="Int32" />
-          <Property Name="id_activity" Type="Int32" />
-          <Property Name="id_breakfast" Type="Int32" />
-          <Property Name="id_lunch" Type="Int32" />
-          <Property Name="id_dinner" Type="Int32" />
-          <Property Name="id_othereat" Type="Int32" />
-          <NavigationProperty Name="Activity" Relationship="Self.FK_PersonActive_Activity_id_activity" FromRole="PersonActive" ToRole="Activity" />
-          <NavigationProperty Name="Breakfast" Relationship="Self.FK_PersonActive_Breakfast_id_breakfast" FromRole="PersonActive" ToRole="Breakfast" />
-          <NavigationProperty Name="Dinner" Relationship="Self.FK_PersonActive_Dinner_id_dinner" FromRole="PersonActive" ToRole="Dinner" />
-          <NavigationProperty Name="Lunch" Relationship="Self.FK_PersonActive_Lunch_id_lunch" FromRole="PersonActive" ToRole="Lunch" />
-          <NavigationProperty Name="OtherEat" Relationship="Self.FK_PersonActive_OtherEat_id_othereat" FromRole="PersonActive" ToRole="OtherEat" />
-          <NavigationProperty Name="Person" Relationship="Self.FK_PersonActive_Person_id_person" FromRole="PersonActive" ToRole="Person" />
-        </EntityType>
-        <Association Name="FK_PersonActive_Activity_id_activity">
-          <End Role="Activity" Type="Self.Activity" Multiplicity="0..1" />
-          <End Role="PersonActive" Type="Self.PersonActive" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Activity">
-              <PropertyRef Name="id_activity" />
-            </Principal>
-            <Dependent Role="PersonActive">
-              <PropertyRef Name="id_activity" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PersonActive_Breakfast_id_breakfast">
-          <End Role="Breakfast" Type="Self.Breakfast" Multiplicity="0..1" />
-          <End Role="PersonActive" Type="Self.PersonActive" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Breakfast">
-              <PropertyRef Name="id_breakfast" />
-            </Principal>
-            <Dependent Role="PersonActive">
-              <PropertyRef Name="id_breakfast" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PersonActive_Dinner_id_dinner">
-          <End Role="Dinner" Type="Self.Dinner" Multiplicity="0..1" />
-          <End Role="PersonActive" Type="Self.PersonActive" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Dinner">
-              <PropertyRef Name="id_dinner" />
-            </Principal>
-            <Dependent Role="PersonActive">
-              <PropertyRef Name="id_dinner" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PersonActive_Lunch_id_lunch">
-          <End Role="Lunch" Type="Self.Lunch" Multiplicity="0..1" />
-          <End Role="PersonActive" Type="Self.PersonActive" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Lunch">
-              <PropertyRef Name="id_lunch" />
-            </Principal>
-            <Dependent Role="PersonActive">
-              <PropertyRef Name="id_lunch" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PersonActive_OtherEat_id_othereat">
-          <End Role="OtherEat" Type="Self.OtherEat" Multiplicity="0..1" />
-          <End Role="PersonActive" Type="Self.PersonActive" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="OtherEat">
-              <PropertyRef Name="id_othereat" />
-            </Principal>
-            <Dependent Role="PersonActive">
-              <PropertyRef Name="id_othereat" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PersonActive_Person_id_person">
-          <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
-          <End Role="PersonActive" Type="Self.PersonActive" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Person">
-              <PropertyRef Name="id_person" />
-            </Principal>
-            <Dependent Role="PersonActive">
-              <PropertyRef Name="id_person" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="EatTrackerEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Activity" EntityType="Self.Activity" />
           <EntitySet Name="Breakfast" EntityType="Self.Breakfast" />
@@ -330,32 +224,87 @@
           <EntitySet Name="Lunch" EntityType="Self.Lunch" />
           <EntitySet Name="OtherEat" EntityType="Self.OtherEat" />
           <EntitySet Name="Person" EntityType="Self.Person" />
-          <EntitySet Name="PersonActive" EntityType="Self.PersonActive" />
-          <AssociationSet Name="FK_PersonActive_Activity_id_activity" Association="Self.FK_PersonActive_Activity_id_activity">
-            <End Role="Activity" EntitySet="Activity" />
-            <End Role="PersonActive" EntitySet="PersonActive" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PersonActive_Breakfast_id_breakfast" Association="Self.FK_PersonActive_Breakfast_id_breakfast">
-            <End Role="Breakfast" EntitySet="Breakfast" />
-            <End Role="PersonActive" EntitySet="PersonActive" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PersonActive_Dinner_id_dinner" Association="Self.FK_PersonActive_Dinner_id_dinner">
-            <End Role="Dinner" EntitySet="Dinner" />
-            <End Role="PersonActive" EntitySet="PersonActive" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PersonActive_Lunch_id_lunch" Association="Self.FK_PersonActive_Lunch_id_lunch">
-            <End Role="Lunch" EntitySet="Lunch" />
-            <End Role="PersonActive" EntitySet="PersonActive" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PersonActive_OtherEat_id_othereat" Association="Self.FK_PersonActive_OtherEat_id_othereat">
-            <End Role="OtherEat" EntitySet="OtherEat" />
-            <End Role="PersonActive" EntitySet="PersonActive" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PersonActive_Person_id_person" Association="Self.FK_PersonActive_Person_id_person">
+          <AssociationSet Name="FK_Activity_Person_id_person" Association="EatTrackerModel.FK_Activity_Person_id_person">
             <End Role="Person" EntitySet="Person" />
-            <End Role="PersonActive" EntitySet="PersonActive" />
+            <End Role="Activity" EntitySet="Activity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Breakfast_Person_id_person" Association="EatTrackerModel.FK_Breakfast_Person_id_person">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Breakfast" EntitySet="Breakfast" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dinner_Person_id_person" Association="EatTrackerModel.FK_Dinner_Person_id_person">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Dinner" EntitySet="Dinner" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lunch_Person_id_person" Association="EatTrackerModel.FK_Lunch_Person_id_person">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Lunch" EntitySet="Lunch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OtherEat_Person_id_person" Association="EatTrackerModel.FK_OtherEat_Person_id_person">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="OtherEat" EntitySet="OtherEat" />
           </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_Activity_Person_id_person">
+          <End Type="EatTrackerModel.Person" Role="Person" Multiplicity="0..1" />
+          <End Type="EatTrackerModel.Activity" Role="Activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="id_person" />
+            </Principal>
+            <Dependent Role="Activity">
+              <PropertyRef Name="id_person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Breakfast_Person_id_person">
+          <End Type="EatTrackerModel.Person" Role="Person" Multiplicity="0..1" />
+          <End Type="EatTrackerModel.Breakfast" Role="Breakfast" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="id_person" />
+            </Principal>
+            <Dependent Role="Breakfast">
+              <PropertyRef Name="id_person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dinner_Person_id_person">
+          <End Type="EatTrackerModel.Person" Role="Person" Multiplicity="0..1" />
+          <End Type="EatTrackerModel.Dinner" Role="Dinner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="id_person" />
+            </Principal>
+            <Dependent Role="Dinner">
+              <PropertyRef Name="id_person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lunch_Person_id_person">
+          <End Type="EatTrackerModel.Person" Role="Person" Multiplicity="0..1" />
+          <End Type="EatTrackerModel.Lunch" Role="Lunch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="id_person" />
+            </Principal>
+            <Dependent Role="Lunch">
+              <PropertyRef Name="id_person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OtherEat_Person_id_person">
+          <End Type="EatTrackerModel.Person" Role="Person" Multiplicity="0..1" />
+          <End Type="EatTrackerModel.OtherEat" Role="OtherEat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="id_person" />
+            </Principal>
+            <Dependent Role="OtherEat">
+              <PropertyRef Name="id_person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -365,6 +314,7 @@
           <EntitySetMapping Name="Activity">
             <EntityTypeMapping TypeName="EatTrackerModel.Activity">
               <MappingFragment StoreEntitySet="Activity">
+                <ScalarProperty Name="id_person" ColumnName="id_person" />
                 <ScalarProperty Name="id_activity" ColumnName="id_activity" />
                 <ScalarProperty Name="Vid_active" ColumnName="Vid_active" />
               </MappingFragment>
@@ -373,6 +323,7 @@
           <EntitySetMapping Name="Breakfast">
             <EntityTypeMapping TypeName="EatTrackerModel.Breakfast">
               <MappingFragment StoreEntitySet="Breakfast">
+                <ScalarProperty Name="id_person" ColumnName="id_person" />
                 <ScalarProperty Name="id_breakfast" ColumnName="id_breakfast" />
                 <ScalarProperty Name="eat_breakfast" ColumnName="eat_breakfast" />
                 <ScalarProperty Name="kalory_breakfast" ColumnName="kalory_breakfast" />
@@ -382,6 +333,7 @@
           <EntitySetMapping Name="Dinner">
             <EntityTypeMapping TypeName="EatTrackerModel.Dinner">
               <MappingFragment StoreEntitySet="Dinner">
+                <ScalarProperty Name="id_person" ColumnName="id_person" />
                 <ScalarProperty Name="id_dinner" ColumnName="id_dinner" />
                 <ScalarProperty Name="eat_dinner" ColumnName="eat_dinner" />
                 <ScalarProperty Name="kalory_din" ColumnName="kalory_din" />
@@ -391,6 +343,7 @@
           <EntitySetMapping Name="Lunch">
             <EntityTypeMapping TypeName="EatTrackerModel.Lunch">
               <MappingFragment StoreEntitySet="Lunch">
+                <ScalarProperty Name="id_person" ColumnName="id_person" />
                 <ScalarProperty Name="id_lunch" ColumnName="id_lunch" />
                 <ScalarProperty Name="eat_lunch" ColumnName="eat_lunch" />
                 <ScalarProperty Name="kalory_lunch" ColumnName="kalory_lunch" />
@@ -400,6 +353,7 @@
           <EntitySetMapping Name="OtherEat">
             <EntityTypeMapping TypeName="EatTrackerModel.OtherEat">
               <MappingFragment StoreEntitySet="OtherEat">
+                <ScalarProperty Name="id_person" ColumnName="id_person" />
                 <ScalarProperty Name="id_othereat" ColumnName="id_othereat" />
                 <ScalarProperty Name="eat_other" ColumnName="eat_other" />
                 <ScalarProperty Name="kalory_other" ColumnName="kalory_other" />
@@ -415,19 +369,6 @@
                 <ScalarProperty Name="Weight" ColumnName="Weight" />
                 <ScalarProperty Name="Age" ColumnName="Age" />
                 <ScalarProperty Name="Kalory" ColumnName="Kalory" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PersonActive">
-            <EntityTypeMapping TypeName="EatTrackerModel.PersonActive">
-              <MappingFragment StoreEntitySet="PersonActive">
-                <ScalarProperty Name="id_person_active" ColumnName="id_person_active" />
-                <ScalarProperty Name="id_person" ColumnName="id_person" />
-                <ScalarProperty Name="id_activity" ColumnName="id_activity" />
-                <ScalarProperty Name="id_breakfast" ColumnName="id_breakfast" />
-                <ScalarProperty Name="id_lunch" ColumnName="id_lunch" />
-                <ScalarProperty Name="id_dinner" ColumnName="id_dinner" />
-                <ScalarProperty Name="id_othereat" ColumnName="id_othereat" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

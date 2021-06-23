@@ -14,16 +14,10 @@ namespace WPFEatTracker
     
     public partial class Activity
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Activity()
-        {
-            this.PersonActive = new HashSet<PersonActive>();
-        }
-    
         public int id_activity { get; set; }
         public string Vid_active { get; set; }
+        public Nullable<int> id_person { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PersonActive> PersonActive { get; set; }
+        public virtual Person Person { get; set; }
     }
 }

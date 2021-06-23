@@ -17,7 +17,11 @@ namespace WPFEatTracker
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Person()
         {
-            this.PersonActive = new HashSet<PersonActive>();
+            this.Activity = new HashSet<Activity>();
+            this.Breakfast = new HashSet<Breakfast>();
+            this.Dinner = new HashSet<Dinner>();
+            this.Lunch = new HashSet<Lunch>();
+            this.OtherEat = new HashSet<OtherEat>();
         }
     
         public int id_person { get; set; }
@@ -28,6 +32,14 @@ namespace WPFEatTracker
         public string Kalory { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PersonActive> PersonActive { get; set; }
+        public virtual ICollection<Activity> Activity { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Breakfast> Breakfast { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Dinner> Dinner { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Lunch> Lunch { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OtherEat> OtherEat { get; set; }
     }
 }

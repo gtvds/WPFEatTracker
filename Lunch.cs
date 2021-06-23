@@ -14,17 +14,11 @@ namespace WPFEatTracker
     
     public partial class Lunch
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Lunch()
-        {
-            this.PersonActive = new HashSet<PersonActive>();
-        }
-    
         public int id_lunch { get; set; }
         public string eat_lunch { get; set; }
         public string kalory_lunch { get; set; }
+        public Nullable<int> id_person { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PersonActive> PersonActive { get; set; }
+        public virtual Person Person { get; set; }
     }
 }

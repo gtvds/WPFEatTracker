@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -30,6 +32,9 @@ namespace WPFEatTracker
         private string? _nameLunch;
         private string? _nameDinner;
         private string? _nameOther;
+        string connectionString;
+        SqlDataAdapter adapter;
+        DataTable table;
 
         public int NeedKKal
         {
@@ -143,15 +148,23 @@ namespace WPFEatTracker
     public partial class MainWindow : Window
     {
     
-        public MainWindow()
+        public MainWindow(Person person)
         {
             InitializeComponent();
-        }
+            //connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
-        public MainWindow(Person per) : this()
-        {
-            this.DataContext = new MainWindowVM() { NeedKKal = Int32.Parse(per.Kalory) };
-        }
+            this.DataContext = new MainWindowVM(); /*{ NeedKKal =  };*/
+            
+               }
+
+        //public MainWindow(string namebr, string namelh, string namedr, string nameotr)
+        //{
+        //    InitializeComponent();
+        //    textboxbreakfast.Text += namebr;
+        //    textboxdinner.Text += namelh;
+        //    textboxlunch.Text += namedr;
+        //    textboxothereat.Text += nameotr;
+        //}
 
         private void OpenPage(object sender, RoutedEventArgs e)
         {

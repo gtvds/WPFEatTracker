@@ -31,6 +31,5 @@ namespace WPFEatTracker
         public virtual DbSet<Lunch> Lunch { get; set; }
         public virtual DbSet<OtherEat> OtherEat { get; set; }
         public virtual DbSet<Person> Person { get; set; }
-        public virtual DbSet<PersonActive> PersonActive { get; set; }
     }
 }

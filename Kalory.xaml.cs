@@ -19,6 +19,7 @@ namespace WPFEatTracker
     /// </summary>
     public partial class Kalory : Window
     {
+       
         public Kalory()
         {
             InitializeComponent();
@@ -30,6 +31,7 @@ namespace WPFEatTracker
         }
 
         Person person;
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

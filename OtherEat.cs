@@ -14,17 +14,11 @@ namespace WPFEatTracker
     
     public partial class OtherEat
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public OtherEat()
-        {
-            this.PersonActive = new HashSet<PersonActive>();
-        }
-    
         public int id_othereat { get; set; }
         public string eat_other { get; set; }
         public string kalory_other { get; set; }
+        public Nullable<int> id_person { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PersonActive> PersonActive { get; set; }
+        public virtual Person Person { get; set; }
     }
 }
