@@ -42,6 +42,7 @@ namespace WPFEatTracker
                 Int32.Parse(StaticPerson.person.Lunch.FirstOrDefault().kalory_lunch) +
                 Int32.Parse(StaticPerson.person.Dinner.FirstOrDefault().kalory_din) +
                 Int32.Parse(StaticPerson.person.OtherEat.FirstOrDefault().kalory_other) : 0;
+            Ostatok = NeedKKal != 0 && KKal != 0 ? NeedKKal - KKal : 0;
         }
 
         public int NeedKKal
