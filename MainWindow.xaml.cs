@@ -201,7 +201,7 @@ namespace WPFEatTracker
             //connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
             this.DataContext = new MainWindowVM(person);
-
+            Conten.DataContext = this.DataContext;
         }
 
         //public MainWindow(string namebr, string namelh, string namedr, string nameotr)

@@ -30,6 +30,7 @@ namespace WPFEatTracker.View
         private string? _nameLunch;
         private string? _nameDinner;
         private string? _nameOther;
+        Person currentPerson;
 
         public int NeedKKal
         {
@@ -146,7 +147,7 @@ namespace WPFEatTracker.View
         public Home()
         {
             InitializeComponent();
-            this.DataContext = new MainWindowVM() /*{ NeedKKal = Person.kkal }*/;
+            //this.DataContext = new MainWindowVM() /*{ NeedKKal = Person.kkal }*/;
         }
 
         private void Button_MouseDown(object sender, MouseButtonEventArgs e)
