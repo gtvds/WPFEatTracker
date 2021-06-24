@@ -32,7 +32,7 @@ namespace WPFEatTracker
         public MainWindowVM(Person person)
         {
             currentPerson = person;
-            NeedKKal = Int32.Parse(person.Kalory);
+            _needKKal = Int32.Parse(person.Kalory);
         }
 
         public int NeedKKal

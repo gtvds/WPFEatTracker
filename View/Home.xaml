@@ -28,7 +28,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Label Content="Калории" FontSize="36" FontFamily="Bahnschrift Light" Grid.Column="0"/>
-                        <TextBox Height="37" Text="{Binding Path=NeedKKal, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" IsManipulationEnabled="True" BorderBrush="LemonChiffon" TextAlignment="Center" Width="120" Grid.Column="1"/>
+                        <TextBox Height="37" Text="{Binding Path=NeedKKal,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" IsManipulationEnabled="True" BorderBrush="LemonChiffon" TextAlignment="Center" Width="120" Grid.Column="1"/>
                         <Button Content="" HorizontalAlignment="Center" Width="50" Height="50" BorderThickness="0" Click="Button_Click" Grid.Column="2">
                             <Button.Background>
                                 <ImageBrush ImageSource="/image/settings1.png" />
