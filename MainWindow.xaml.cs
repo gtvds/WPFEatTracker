@@ -1,22 +1,11 @@
 ﻿using MaterialDesignThemes.Wpf;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 using WPFEatTracker.Models;
 using WPFEatTracker.View;
 using WPFEatTracker.ViewModel;
@@ -33,8 +22,17 @@ namespace WPFEatTracker
         private string? _nameDinner;
         private string? _nameOther;
         string connectionString;
-        SqlDataAdapter adapter;
-        DataTable table;
+        Person currentPerson;
+
+        public MainWindowVM()
+        {
+
+        }
+
+        public MainWindowVM(Person person)
+        {
+            currentPerson = person;
+        }
 
         public int NeedKKal
         {
@@ -86,6 +84,18 @@ namespace WPFEatTracker
                         NameBreakfast = ((BreakfastVM)viewbt.DataContext).NameBreakfast;
                         KKal += ((BreakfastVM)viewbt.DataContext).KKal.Value;
                         Ostatok = NeedKKal - KKal;
+                        try
+                        {
+                            using(EatTrackerEntities DbContext = new EatTrackerEntities())
+                            {
+                                DbContext.Breakfast.Add(new Breakfast() { eat_breakfast = NameBreakfast, kalory_breakfast = ((BreakfastVM)viewbt.DataContext).KKal.Value.ToString(), Person = currentPerson });
+                                DbContext.SaveChanges();
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "Ошибка при сохранении данных");
+                        }
                         var view = new Motvation1 { DataContext = new MotivationVM() };
                         var result = await DialogHost.Show(view, "RootDialog", ClosingEventHandler);
                     }
@@ -98,6 +108,18 @@ namespace WPFEatTracker
                         NameDinner = ((DinnerVM)viewdr.DataContext).NameDinner;
                         KKal += ((DinnerVM)viewdr.DataContext).KKal.Value;
                         Ostatok = NeedKKal - KKal;
+                        try
+                        {
+                            using (EatTrackerEntities DbContext = new EatTrackerEntities())
+                            {
+                                DbContext.Dinner.Add(new Dinner() { eat_dinner = NameDinner, kalory_din = ((DinnerVM)viewdr.DataContext).KKal.Value.ToString(), Person = currentPerson });
+                                DbContext.SaveChanges();
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "Ошибка при сохранении данных");
+                        }
                         var view = new Motvation2 { DataContext = new MotivationVM() };
                         var result = await DialogHost.Show(view, "RootDialog", ClosingEventHandler);
                     }
@@ -110,6 +132,18 @@ namespace WPFEatTracker
                         NameLunch = ((LunchVM)viewlh.DataContext).NameLunch;
                         KKal += ((LunchVM)viewlh.DataContext).KKal.Value;
                         Ostatok = NeedKKal - KKal;
+                        try
+                        {
+                            using (EatTrackerEntities DbContext = new EatTrackerEntities())
+                            {
+                                DbContext.Lunch.Add(new Lunch() { eat_lunch = NameBreakfast, kalory_lunch = ((LunchVM)viewlh.DataContext).KKal.Value.ToString(), Person = currentPerson });
+                                DbContext.SaveChanges();
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "Ошибка при сохранении данных");
+                        }
                         var view = new Motvation3 { DataContext = new MotivationVM() };
                         var result = await DialogHost.Show(view, "RootDialog", ClosingEventHandler);
                     }
@@ -122,6 +156,18 @@ namespace WPFEatTracker
                         NameOther = ((OtherVM)viewor.DataContext).NameOther;
                         KKal += ((OtherVM)viewor.DataContext).KKal.Value;
                         Ostatok = NeedKKal - KKal;
+                        try
+                        {
+                            using (EatTrackerEntities DbContext = new EatTrackerEntities())
+                            {
+                                DbContext.OtherEat.Add(new OtherEat() { eat_other = NameBreakfast, kalory_other = ((OtherVM)viewor.DataContext).KKal.Value.ToString(), Person = currentPerson });
+                                DbContext.SaveChanges();
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "Ошибка при сохранении данных");
+                        }
                         var view = new Motvation4 { DataContext = new MotivationVM() };
                         var result = await DialogHost.Show(view, "RootDialog", ClosingEventHandler);
                     }
@@ -153,9 +199,9 @@ namespace WPFEatTracker
             InitializeComponent();
             //connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
-            this.DataContext = new MainWindowVM(); /*{ NeedKKal =  };*/
-            
-               }
+            this.DataContext = new MainWindowVM() { NeedKKal =  Int32.Parse(person.Kalory) };
+
+        }
 
         //public MainWindow(string namebr, string namelh, string namedr, string nameotr)
         //{
