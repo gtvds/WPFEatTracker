@@ -9,6 +9,7 @@
       Title="Recommendations">
 
     <Grid>
-        
+        <Label Content="" HorizontalAlignment="Left" Margin="302,75,0,0" VerticalAlignment="Top" />
+
     </Grid>
 </Page>
