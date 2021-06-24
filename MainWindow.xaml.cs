@@ -1,6 +1,7 @@
 ﻿using MaterialDesignThemes.Wpf;
 using System;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
@@ -207,7 +208,11 @@ namespace WPFEatTracker
                     Conten.Navigate(new View.Recommendations());
                     break;
                 case "GoDiagram":
-                    Conten.Navigate(new Diagram());
+                    Conten.Navigate(new Diagram(
+                        Int32.Parse(StaticPerson.person.Breakfast.FirstOrDefault().kalory_breakfast),
+                        Int32.Parse(StaticPerson.person.OtherEat.FirstOrDefault().kalory_other),
+                        Int32.Parse(StaticPerson.person.Lunch.FirstOrDefault().kalory_lunch),
+                        Int32.Parse(StaticPerson.person.Dinner.FirstOrDefault().kalory_din)));
                     break;
                 default:
                     return;

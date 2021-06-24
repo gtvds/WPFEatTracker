@@ -32,7 +32,7 @@ namespace WPFEatTracker.View
             DataContext = this;
         }
 
-        public Diagram(int breakfast, int other, int lunch, int dinner)
+        public Diagram(int breakfast, int other, int lunch, int dinner) : this()
         {
             BreakfastPieSeries.Values = new ChartValues<int> { breakfast };
             OtherPieSeries.Values = new ChartValues<int> { other };
