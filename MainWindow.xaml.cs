@@ -32,6 +32,7 @@ namespace WPFEatTracker
         public MainWindowVM(Person person)
         {
             currentPerson = person;
+            NeedKKal = Int32.Parse(person.Kalory);
         }
 
         public int NeedKKal
@@ -88,7 +89,7 @@ namespace WPFEatTracker
                         {
                             using(EatTrackerEntities DbContext = new EatTrackerEntities())
                             {
-                                DbContext.Breakfast.Add(new Breakfast() { eat_breakfast = NameBreakfast, kalory_breakfast = ((BreakfastVM)viewbt.DataContext).KKal.Value.ToString(), Person = currentPerson });
+                                DbContext.Breakfast.Add(new Breakfast() { eat_breakfast = NameBreakfast, kalory_breakfast = ((BreakfastVM)viewbt.DataContext).KKal.Value.ToString(), id_person = currentPerson.id_person, Person = currentPerson });
                                 DbContext.SaveChanges();
                             }
                         }
@@ -112,7 +113,7 @@ namespace WPFEatTracker
                         {
                             using (EatTrackerEntities DbContext = new EatTrackerEntities())
                             {
-                                DbContext.Dinner.Add(new Dinner() { eat_dinner = NameDinner, kalory_din = ((DinnerVM)viewdr.DataContext).KKal.Value.ToString(), Person = currentPerson });
+                                DbContext.Dinner.Add(new Dinner() { eat_dinner = NameDinner, kalory_din = ((DinnerVM)viewdr.DataContext).KKal.Value.ToString(), id_person = currentPerson.id_person, Person = currentPerson });
                                 DbContext.SaveChanges();
                             }
                         }
@@ -136,7 +137,7 @@ namespace WPFEatTracker
                         {
                             using (EatTrackerEntities DbContext = new EatTrackerEntities())
                             {
-                                DbContext.Lunch.Add(new Lunch() { eat_lunch = NameBreakfast, kalory_lunch = ((LunchVM)viewlh.DataContext).KKal.Value.ToString(), Person = currentPerson });
+                                DbContext.Lunch.Add(new Lunch() { eat_lunch = NameBreakfast, kalory_lunch = ((LunchVM)viewlh.DataContext).KKal.Value.ToString(), id_person = currentPerson.id_person, Person = currentPerson });
                                 DbContext.SaveChanges();
                             }
                         }
@@ -160,7 +161,7 @@ namespace WPFEatTracker
                         {
                             using (EatTrackerEntities DbContext = new EatTrackerEntities())
                             {
-                                DbContext.OtherEat.Add(new OtherEat() { eat_other = NameBreakfast, kalory_other = ((OtherVM)viewor.DataContext).KKal.Value.ToString(), Person = currentPerson });
+                                DbContext.OtherEat.Add(new OtherEat() { eat_other = NameBreakfast, kalory_other = ((OtherVM)viewor.DataContext).KKal.Value.ToString(), id_person = currentPerson.id_person, Person = currentPerson });
                                 DbContext.SaveChanges();
                             }
                         }
@@ -199,7 +200,7 @@ namespace WPFEatTracker
             InitializeComponent();
             //connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
-            this.DataContext = new MainWindowVM() { NeedKKal =  Int32.Parse(person.Kalory) };
+            this.DataContext = new MainWindowVM(person);
 
         }
 
