@@ -1,6 +1,7 @@
 ﻿using MaterialDesignThemes.Wpf;
 using System;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
@@ -28,6 +29,11 @@ namespace WPFEatTracker
         {
             currentPerson = StaticPerson.person;
             NeedKKal = Int32.Parse(StaticPerson.person.Kalory);
+            NameBreakfast = StaticPerson.person.Breakfast.FirstOrDefault().eat_breakfast != String.Empty ? StaticPerson.person.Breakfast.FirstOrDefault().eat_breakfast : String.Empty;
+            NameLunch = StaticPerson.person.Lunch.FirstOrDefault().eat_lunch != String.Empty ? StaticPerson.person.Lunch.FirstOrDefault().eat_lunch : String.Empty;
+            NameDinner = StaticPerson.person.Dinner.FirstOrDefault().eat_dinner != String.Empty ? StaticPerson.person.Dinner.FirstOrDefault().eat_dinner : String.Empty;
+            NameOther = StaticPerson.person.OtherEat.FirstOrDefault().eat_other != String.Empty ? StaticPerson.person.OtherEat.FirstOrDefault().eat_other : String.Empty;
+
         }
 
         public int NeedKKal
@@ -207,7 +213,12 @@ namespace WPFEatTracker
                     Conten.Navigate(new View.Recommendations());
                     break;
                 case "GoDiagram":
-                    Conten.Navigate(new Diagram());
+                    Conten.Navigate(new Diagram(
+                        Int32.Parse(StaticPerson.person.Breakfast.FirstOrDefault().kalory_breakfast), 
+                        Int32.Parse(StaticPerson.person.OtherEat.FirstOrDefault().eat_other),
+                        Int32.Parse(StaticPerson.person.Lunch.FirstOrDefault().kalory_lunch),
+                        Int32.Parse(StaticPerson.person.Dinner.FirstOrDefault().kalory_din)
+                        ));
                     break;
                 default:
                     return;
