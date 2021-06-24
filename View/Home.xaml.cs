@@ -147,7 +147,7 @@ namespace WPFEatTracker.View
         public Home()
         {
             InitializeComponent();
-            //this.DataContext = new MainWindowVM() /*{ NeedKKal = Person.kkal }*/;
+            this.DataContext = new MainWindowVM() { NeedKKal = Int32.Parse(StaticPerson.person.Kalory) };
         }
 
         private void Button_MouseDown(object sender, MouseButtonEventArgs e)

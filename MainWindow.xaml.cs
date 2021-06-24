@@ -26,13 +26,8 @@ namespace WPFEatTracker
 
         public MainWindowVM()
         {
-
-        }
-
-        public MainWindowVM(Person person)
-        {
-            currentPerson = person;
-            _needKKal = Int32.Parse(person.Kalory);
+            currentPerson = StaticPerson.person;
+            NeedKKal = Int32.Parse(StaticPerson.person.Kalory);
         }
 
         public int NeedKKal
@@ -198,20 +193,8 @@ namespace WPFEatTracker
         public MainWindow(Person person)
         {
             InitializeComponent();
-            //connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-
-            this.DataContext = new MainWindowVM(person);
-            Conten.DataContext = this.DataContext;
+            this.DataContext = new MainWindowVM();
         }
-
-        //public MainWindow(string namebr, string namelh, string namedr, string nameotr)
-        //{
-        //    InitializeComponent();
-        //    textboxbreakfast.Text += namebr;
-        //    textboxdinner.Text += namelh;
-        //    textboxlunch.Text += namedr;
-        //    textboxothereat.Text += nameotr;
-        //}
 
         private void OpenPage(object sender, RoutedEventArgs e)
         {
@@ -229,16 +212,6 @@ namespace WPFEatTracker
                 default:
                     return;
             }
-
-            //try
-            //{
-            //    //Подсчёт количества переходов и вывод страницы с мотивациями, если она нужна...
-            //    if (ClickCounter())
-            //    {
-            //        ShowMotivation();
-            //    }
-            //}
-            //catch { return; }
         }
 
         private void Button_MouseDown(object sender, MouseButtonEventArgs e)

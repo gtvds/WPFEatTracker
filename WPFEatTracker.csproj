@@ -117,6 +117,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\AnotherCommandImplementation.cs" />
+    <Compile Include="Models\StaticPerson.cs" />
     <Compile Include="OtherEat.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

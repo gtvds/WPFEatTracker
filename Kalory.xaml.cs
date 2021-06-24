@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WPFEatTracker.Models;
 
 namespace WPFEatTracker
 {
@@ -48,7 +49,8 @@ namespace WPFEatTracker
             {
                 MessageBox.Show(ex.Message, "Ошибка");
             }
-            MainWindow mw = new MainWindow(person);
+            StaticPerson.person = person;
+            MainWindow mw = new MainWindow(StaticPerson.person);
             mw.Show();
             this.Hide();
             
