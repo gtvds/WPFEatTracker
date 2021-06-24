@@ -33,7 +33,15 @@ namespace WPFEatTracker
             NameLunch = StaticPerson.person.Lunch.FirstOrDefault() != null ? StaticPerson.person.Lunch.FirstOrDefault().eat_lunch : String.Empty;
             NameDinner = StaticPerson.person.Dinner.FirstOrDefault() != null ? StaticPerson.person.Dinner.FirstOrDefault().eat_dinner : String.Empty;
             NameOther = StaticPerson.person.OtherEat.FirstOrDefault() != null ? StaticPerson.person.OtherEat.FirstOrDefault().eat_other : String.Empty;
-
+            KKal = StaticPerson.person.Breakfast.FirstOrDefault() != null ||
+                StaticPerson.person.Lunch.FirstOrDefault() != null ||
+                StaticPerson.person.Dinner.FirstOrDefault() != null ||
+                StaticPerson.person.OtherEat.FirstOrDefault() != null
+                ?
+                Int32.Parse(StaticPerson.person.Breakfast.FirstOrDefault().kalory_breakfast) +
+                Int32.Parse(StaticPerson.person.Lunch.FirstOrDefault().kalory_lunch) +
+                Int32.Parse(StaticPerson.person.Dinner.FirstOrDefault().kalory_din) +
+                Int32.Parse(StaticPerson.person.OtherEat.FirstOrDefault().kalory_other) : 0;
         }
 
         public int NeedKKal
