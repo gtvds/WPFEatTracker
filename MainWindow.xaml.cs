@@ -214,11 +214,10 @@ namespace WPFEatTracker
                     break;
                 case "GoDiagram":
                     Conten.Navigate(new Diagram(
-                        Int32.Parse(StaticPerson.person.Breakfast.FirstOrDefault().kalory_breakfast), 
-                        Int32.Parse(StaticPerson.person.OtherEat.FirstOrDefault().eat_other),
+                        Int32.Parse(StaticPerson.person.Breakfast.FirstOrDefault().kalory_breakfast),
+                        Int32.Parse(StaticPerson.person.OtherEat.FirstOrDefault().kalory_other),
                         Int32.Parse(StaticPerson.person.Lunch.FirstOrDefault().kalory_lunch),
-                        Int32.Parse(StaticPerson.person.Dinner.FirstOrDefault().kalory_din)
-                        ));
+                        Int32.Parse(StaticPerson.person.Dinner.FirstOrDefault().kalory_din)));
                     break;
                 default:
                     return;
